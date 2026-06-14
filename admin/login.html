@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Admin Login</title>
+<title>Admin Login | Ronglyang Lotus</title>
 
 <link rel="stylesheet" href="../assets/css/admin.css">
 
@@ -19,6 +19,8 @@
 <div class="login-box">
 
 <h1>Ronglyang Lotus Admin</h1>
+
+<p id="modeText"></p>
 
 <form id="loginForm">
 
@@ -36,13 +38,24 @@ placeholder="Password"
 required
 >
 
-<button type="submit">
-Login
+<button
+type="submit"
+id="submitBtn"
+>
+Continue
 </button>
 
 </form>
 
 <p id="loginError"></p>
+
+<button
+type="button"
+onclick="resetAdmin()"
+class="reset-btn"
+>
+Reset Admin Account
+</button>
 
 </div>
 
