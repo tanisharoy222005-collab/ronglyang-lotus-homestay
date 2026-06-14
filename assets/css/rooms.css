@@ -1,0 +1,130 @@
+.rooms-hero{
+height:60vh;
+
+background:
+linear-gradient(
+rgba(0,0,0,.45),
+rgba(0,0,0,.45)
+),
+url('../images/hero/hero.jpg');
+
+background-size:cover;
+background-position:center;
+
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+color:white;
+}
+
+.rooms-hero-content h1{
+font-size:3rem;
+margin-bottom:15px;
+}
+
+.room-section{
+padding:80px 0;
+}
+
+.alt-bg{
+background:#f7f7f7;
+}
+
+.room-card-large{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+align-items:center;
+}
+
+.room-image img{
+width:100%;
+border-radius:15px;
+height:450px;
+object-fit:cover;
+}
+
+.room-tag{
+display:inline-block;
+background:#b88746;
+color:white;
+padding:8px 15px;
+border-radius:30px;
+margin-bottom:15px;
+font-size:.9rem;
+}
+
+.room-info h2{
+margin-bottom:20px;
+}
+
+.room-info p{
+margin-bottom:20px;
+}
+
+.room-details{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:15px;
+margin:25px 0;
+}
+
+.price-box{
+margin:25px 0;
+}
+
+.price{
+font-size:2rem;
+font-weight:700;
+color:#b88746;
+}
+
+.reserve-btn{
+display:inline-block;
+background:#b88746;
+color:white;
+padding:14px 30px;
+border-radius:8px;
+}
+
+.room-amenities{
+padding:80px 0;
+background:#fafafa;
+}
+
+.amenities-grid{
+display:grid;
+grid-template-columns:
+repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+margin-top:40px;
+}
+
+.amenity{
+background:white;
+padding:20px;
+text-align:center;
+border-radius:10px;
+box-shadow:0 4px 15px rgba(0,0,0,.08);
+}
+
+@media(max-width:900px){
+
+.room-card-large{
+grid-template-columns:1fr;
+}
+
+.room-image img{
+height:300px;
+}
+
+.rooms-hero-content h1{
+font-size:2.2rem;
+}
+
+.room-details{
+grid-template-columns:1fr;
+}
+
+}
