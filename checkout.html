@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Checkout</title>
+
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/checkout.css">
+
+</head>
+
+<body>
+
+<section class="checkout-page">
+
+<div class="checkout-container">
+
+<h1>Complete Your Booking</h1>
+
+<form id="bookingForm">
+
+<input
+type="text"
+id="name"
+placeholder="Full Name"
+required
+>
+
+<input
+type="email"
+id="email"
+placeholder="Email Address"
+required
+>
+
+<input
+type="tel"
+id="phone"
+placeholder="Phone Number"
+required
+>
+
+<label>Check-In Date</label>
+
+<input
+type="date"
+id="checkin"
+required
+>
+
+<label>Check-Out Date</label>
+
+<input
+type="date"
+id="checkout"
+required
+>
+
+<select id="room">
+
+<option value="Deluxe Room">
+Deluxe Room
+</option>
+
+<option value="Premium Room">
+Premium Room
+</option>
+
+<option value="Family Room">
+Family Room
+</option>
+
+</select>
+
+<button type="submit">
+
+Confirm Booking
+
+</button>
+
+</form>
+
+</div>
+
+</section>
+
+<script src="assets/js/booking.js"></script>
+
+</body>
+</html>
