@@ -1,19 +1,21 @@
-/* HERO */
+/* ===================================
+   HERO
+=================================== */
 
 .contact-hero{
-    position:relative;
     height:75vh;
-    overflow:hidden;
+    min-height:550px;
 
     background:
     linear-gradient(
     rgba(0,0,0,.55),
     rgba(0,0,0,.55)
     ),
-    url("../gallery2.png");
+    url("../gallery15.png");
 
     background-size:cover;
     background-position:center;
+    background-repeat:no-repeat;
 
     display:flex;
     justify-content:center;
@@ -22,19 +24,16 @@
 }
 
 .contact-hero-content{
-    position:relative;
-    z-index:2;
+    max-width:850px;
     color:white;
-    max-width:800px;
     padding:20px;
 }
 
 .contact-hero-content span{
-    display:inline-block;
-    margin-bottom:15px;
-    letter-spacing:2px;
+    display:block;
+    letter-spacing:3px;
     text-transform:uppercase;
-    opacity:.9;
+    margin-bottom:15px;
 }
 
 .contact-hero-content h1{
@@ -44,10 +43,12 @@
 
 .contact-hero-content p{
     font-size:1.2rem;
-    line-height:1.8;
+    line-height:1.9;
 }
 
-/* CONTACT */
+/* ===================================
+   CONTACT SECTION
+=================================== */
 
 .contact-section{
     padding:100px 8%;
@@ -59,50 +60,79 @@
     margin:auto;
 
     display:grid;
-    grid-template-columns:1fr 1.3fr;
+    grid-template-columns:1fr 1.2fr;
     gap:50px;
 }
 
-.contact-info h2,
-.contact-form-wrapper h2{
-    margin-bottom:20px;
-    font-size:2rem;
+/* ===================================
+   CONTACT INFO
+=================================== */
+
+.contact-info h2{
+    font-size:2.2rem;
+    margin-bottom:15px;
 }
 
 .contact-description{
-    margin-bottom:30px;
     color:#666;
+    margin-bottom:30px;
 }
 
 .info-card{
     background:white;
+
     padding:25px;
-    border-radius:18px;
+
+    border-radius:20px;
+
     margin-bottom:20px;
-    box-shadow:0 10px 30px rgba(0,0,0,.06);
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.06);
 }
 
 .info-card h3{
-    margin-bottom:10px;
+    margin-bottom:12px;
+    color:#111827;
+}
+
+.info-card p{
+    color:#555;
+    line-height:1.8;
 }
 
 .whatsapp-btn{
     display:inline-block;
+
     background:#25D366;
     color:white;
+
     padding:15px 30px;
+
     border-radius:50px;
-    margin-top:10px;
+
+    margin-top:20px;
+
     font-weight:600;
 }
 
-/* FORM */
+/* ===================================
+   FORM
+=================================== */
 
 .contact-form-wrapper{
     background:white;
+
     padding:40px;
+
     border-radius:25px;
-    box-shadow:0 15px 35px rgba(0,0,0,.08);
+
+    box-shadow:
+    0 15px 35px rgba(0,0,0,.08);
+}
+
+.contact-form-wrapper h2{
+    margin-bottom:25px;
 }
 
 .contact-form{
@@ -121,9 +151,13 @@
 .contact-form select,
 .contact-form textarea{
     width:100%;
+
     padding:16px;
+
     border:1px solid #ddd;
+
     border-radius:12px;
+
     font-size:1rem;
 }
 
@@ -133,16 +167,23 @@
 
 .contact-form button{
     border:none;
+
     background:#b88746;
     color:white;
+
     padding:16px;
+
     border-radius:12px;
+
     cursor:pointer;
+
     font-size:1rem;
     font-weight:600;
 }
 
-/* MAP */
+/* ===================================
+   MAP
+=================================== */
 
 .map-section{
     padding:100px 8%;
@@ -150,6 +191,7 @@
 
 .map-section h2{
     text-align:center;
+    font-size:2.5rem;
     margin-bottom:40px;
 }
 
@@ -161,22 +203,30 @@
 .map-container iframe{
     width:100%;
     height:500px;
+
     border:none;
-    border-radius:20px;
-    box-shadow:0 15px 35px rgba(0,0,0,.08);
+
+    border-radius:24px;
+
+    box-shadow:
+    0 15px 35px rgba(0,0,0,.08);
 }
 
-/* CTA */
+/* ===================================
+   CTA
+=================================== */
 
 .contact-cta{
-    padding:100px 8%;
-    text-align:center;
-    background:#1e293b;
+    background:#111827;
     color:white;
+
+    text-align:center;
+
+    padding:100px 20px;
 }
 
 .contact-cta h2{
-    font-size:2.5rem;
+    font-size:2.8rem;
     margin-bottom:20px;
 }
 
@@ -188,14 +238,20 @@
 
 .cta-btn{
     display:inline-block;
+
     background:white;
-    color:#111;
+    color:#111827;
+
     padding:15px 35px;
+
     border-radius:50px;
+
     font-weight:600;
 }
 
-/* MOBILE */
+/* ===================================
+   MOBILE
+=================================== */
 
 @media(max-width:900px){
 
@@ -208,11 +264,19 @@
 }
 
 .contact-hero-content h1{
-    font-size:2.6rem;
+    font-size:2.5rem;
+}
+
+.contact-hero-content p{
+    font-size:1rem;
 }
 
 .map-container iframe{
     height:350px;
+}
+
+.contact-cta h2{
+    font-size:2rem;
 }
 
 }
