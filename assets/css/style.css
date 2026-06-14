@@ -518,5 +518,138 @@ height:220px;
 right:20px;
 top:20px;
 }
+/* ==========================
+   CONTACT PAGE
+========================== */
 
+.contact-hero{
+height:60vh;
+
+background:
+linear-gradient(
+rgba(0,0,0,.45),
+rgba(0,0,0,.45)
+),
+url('../images/hero/hero.jpg');
+
+background-size:cover;
+background-position:center;
+
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+
+color:white;
+}
+
+.contact-hero-content h1{
+font-size:3rem;
+margin-bottom:15px;
+}
+
+.contact-section{
+padding:80px 0;
+}
+
+.contact-grid{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:50px;
+}
+
+.contact-info h2,
+.contact-form-box h2{
+margin-bottom:25px;
+}
+
+.info-box{
+margin-bottom:25px;
+}
+
+.contact-form-box form{
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+.contact-form-box input,
+.contact-form-box textarea,
+.contact-form-box select{
+
+padding:15px;
+
+border:1px solid #ddd;
+
+border-radius:8px;
+
+font-size:1rem;
+}
+
+.contact-form-box button{
+
+background:#b88746;
+
+color:white;
+
+border:none;
+
+padding:15px;
+
+border-radius:8px;
+
+cursor:pointer;
+
+font-size:1rem;
+}
+
+.whatsapp-btn{
+
+display:inline-block;
+
+background:#25d366;
+
+color:white;
+
+padding:14px 25px;
+
+border-radius:8px;
+
+margin-top:20px;
+}
+
+.map-section{
+padding:80px 0;
+background:#fafafa;
+}
+
+.map-container iframe{
+
+width:100%;
+
+height:450px;
+
+border:none;
+
+border-radius:12px;
+}
+
+@media(max-width:900px){
+
+.contact-grid{
+grid-template-columns:1fr;
+}
+
+.contact-hero-content h1{
+font-size:2.2rem;
+}
+
+.map-container iframe{
+height:350px;
+}
+
+}
 }
