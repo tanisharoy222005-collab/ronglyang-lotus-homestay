@@ -1,28 +1,98 @@
-/* =========================
-   SIMPLE ADMIN LOGIN
-========================= */
+document.addEventListener("DOMContentLoaded", () => {
 
-const loginForm =
-document.getElementById("loginForm");
+const form = document.getElementById("loginForm");
 
-if (loginForm) {
+if (!form) return;
 
-loginForm.addEventListener(
-"submit",
-function(e){
+const emailInput = document.getElementById("email");
+const passwordInput = document.getElementById("password");
+
+const errorText = document.getElementById("loginError");
+const modeText = document.getElementById("modeText");
+const submitBtn = document.getElementById("submitBtn");
+
+const savedEmail =
+localStorage.getItem("adminEmail");
+
+const savedPassword =
+localStorage.getItem("adminPassword");
+
+/* FIRST TIME SETUP */
+
+if (!savedEmail || !savedPassword) {
+
+modeText.textContent =
+"No admin account found. Create a new admin account.";
+
+submitBtn.textContent =
+"Create Account";
+
+}
+
+/* LOGIN MODE */
+
+else {
+
+modeText.textContent =
+"Login using your saved admin credentials.";
+
+submitBtn.textContent =
+"Login";
+
+}
+
+form.addEventListener("submit", (e) => {
 
 e.preventDefault();
 
 const email =
-document.getElementById("email").value;
+emailInput.value.trim();
 
 const password =
-document.getElementById("password").value;
+passwordInput.value.trim();
 
-if(
-email === "admin@ronglyanglotus.com" &&
-password === "admin123"
-){
+const storedEmail =
+localStorage.getItem("adminEmail");
+
+const storedPassword =
+localStorage.getItem("adminPassword");
+
+/* CREATE ADMIN */
+
+if (!storedEmail || !storedPassword) {
+
+localStorage.setItem(
+"adminEmail",
+email
+);
+
+localStorage.setItem(
+"adminPassword",
+password
+);
+
+localStorage.setItem(
+"adminLoggedIn",
+"true"
+);
+
+alert(
+"Admin account created successfully."
+);
+
+window.location.href =
+"dashboard.html";
+
+return;
+
+}
+
+/* LOGIN */
+
+if (
+email === storedEmail &&
+password === storedPassword
+) {
 
 localStorage.setItem(
 "adminLoggedIn",
@@ -33,59 +103,19 @@ window.location.href =
 "dashboard.html";
 
 }
-else{
 
-const error =
-document.getElementById("loginError");
+else {
 
-error.innerText =
-"Invalid email or password";
+errorText.textContent =
+"Invalid Email or Password.";
 
 }
 
 });
-}
 
-/* =========================
-   PAGE PROTECTION
-========================= */
+});
 
-const currentPage =
-window.location.pathname;
-
-const protectedPages = [
-
-"dashboard.html",
-"rooms.html",
-"bookings.html",
-"offers.html"
-
-];
-
-const isProtectedPage =
-protectedPages.some(page =>
-currentPage.includes(page)
-);
-
-if(isProtectedPage){
-
-const loggedIn =
-localStorage.getItem(
-"adminLoggedIn"
-);
-
-if(loggedIn !== "true"){
-
-window.location.href =
-"login.html";
-
-}
-
-}
-
-/* =========================
-   LOGOUT FUNCTION
-========================= */
+/* LOGOUT */
 
 function logout(){
 
@@ -98,187 +128,34 @@ window.location.href =
 
 }
 
-/* =========================
-   LOAD BOOKINGS
-========================= */
+/* RESET ACCOUNT */
 
-function loadBookings(){
-
-const bookingData =
-JSON.parse(
-localStorage.getItem("booking")
-);
-
-const bookingTable =
-document.getElementById(
-"bookingTable"
-);
+function resetAdmin(){
 
 if(
-bookingData &&
-bookingTable
+confirm(
+"Delete current admin account?"
+)
 ){
 
-bookingTable.innerHTML += `
-
-<tr>
-
-<td>${bookingData.name}</td>
-
-<td>${bookingData.email}</td>
-
-<td>${bookingData.phone}</td>
-
-<td>${bookingData.room}</td>
-
-<td>${bookingData.checkin}</td>
-
-<td>${bookingData.checkout}</td>
-
-</tr>
-
-`;
-
-}
-
-}
-
-loadBookings();
-
-/* =========================
-   LOAD DASHBOARD STATS
-========================= */
-
-function loadDashboardStats(){
-
-const totalRooms =
-document.getElementById(
-"totalRooms"
+localStorage.removeItem(
+"adminEmail"
 );
 
-const totalBookings =
-document.getElementById(
-"totalBookings"
+localStorage.removeItem(
+"adminPassword"
 );
 
-const totalOffers =
-document.getElementById(
-"totalOffers"
-);
-
-if(totalRooms){
-
-totalRooms.innerText = "3";
-
-}
-
-if(totalBookings){
-
-const booking =
-localStorage.getItem(
-"booking"
-);
-
-totalBookings.innerText =
-booking ? "1" : "0";
-
-}
-
-if(totalOffers){
-
-totalOffers.innerText = "2";
-
-}
-
-}
-
-loadDashboardStats();
-
-/* =========================
-   SAVE OFFERS
-========================= */
-
-const offerForm =
-document.getElementById(
-"offerForm"
-);
-
-if(offerForm){
-
-offerForm.addEventListener(
-"submit",
-function(e){
-
-e.preventDefault();
-
-const title =
-document.getElementById(
-"offerTitle"
-).value;
-
-const description =
-document.getElementById(
-"offerDescription"
-).value;
-
-const offer = {
-
-title,
-description
-
-};
-
-localStorage.setItem(
-"hotelOffer",
-JSON.stringify(offer)
+localStorage.removeItem(
+"adminLoggedIn"
 );
 
 alert(
-"Offer Saved Successfully"
+"Admin account removed."
 );
 
-offerForm.reset();
-
-});
-}
-
-/* =========================
-   LOAD OFFERS
-========================= */
-
-function loadOffer(){
-
-const offer =
-JSON.parse(
-localStorage.getItem(
-"hotelOffer"
-)
-);
-
-const offerContainer =
-document.getElementById(
-"offerContainer"
-);
-
-if(
-offer &&
-offerContainer
-){
-
-offerContainer.innerHTML = `
-
-<div class="card">
-
-<h3>${offer.title}</h3>
-
-<p>${offer.description}</p>
-
-</div>
-
-`;
+location.reload();
 
 }
 
 }
-
-loadOffer();
