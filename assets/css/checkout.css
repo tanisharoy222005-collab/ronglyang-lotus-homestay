@@ -1,0 +1,101 @@
+.checkout-page{
+padding:100px 20px;
+min-height:100vh;
+background:#f5f5f5;
+}
+
+.checkout-container{
+max-width:700px;
+margin:auto;
+background:#fff;
+padding:40px;
+border-radius:12px;
+box-shadow:0 5px 25px rgba(0,0,0,0.1);
+}
+
+.checkout-container h1{
+margin-bottom:25px;
+}
+
+.checkout-container form{
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+.checkout-container input,
+.checkout-container select{
+padding:15px;
+border:1px solid #ddd;
+border-radius:8px;
+font-size:16px;
+}
+
+.checkout-container button{
+padding:15px;
+background:#b88746;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+font-size:16px;
+}
+
+.checkout-container button:hover{
+opacity:.9;
+}
+
+.room-details-page{
+padding:100px 20px;
+}
+
+.room-details-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+align-items:center;
+}
+
+.room-detail-image{
+width:100%;
+border-radius:12px;
+}
+
+.room-price{
+font-size:2rem;
+font-weight:700;
+color:#b88746;
+margin:20px 0;
+}
+
+.feature-list{
+margin-top:20px;
+}
+
+.feature-list li{
+margin-bottom:10px;
+}
+
+.success-page{
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+background:#f7f7f7;
+}
+
+.success-box{
+background:white;
+padding:50px;
+border-radius:12px;
+text-align:center;
+box-shadow:0 5px 25px rgba(0,0,0,.08);
+}
+
+@media(max-width:768px){
+
+.room-details-grid{
+grid-template-columns:1fr;
+}
+
+}
