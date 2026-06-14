@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Gallery | Ronglyang Lotus Homestay</title>
+
+<meta name="description"
+content="Explore the photo gallery of Ronglyang Lotus Homestay, Gangtok. View our rooms, mountain views, interiors and surroundings.">
+
+<link rel="stylesheet" href="assets/css/style.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<header>
+
+<nav class="navbar">
+
+<div class="logo">
+Ronglyang Lotus
+</div>
+
+<ul class="nav-menu">
+
+<li><a href="index.html">Home</a></li>
+<li><a href="rooms.html">Rooms</a></li>
+<li><a href="gallery.html">Gallery</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="contact.html">Contact</a></li>
+
+<li>
+<a href="contact.html" class="book-btn">
+Book Now
+</a>
+</li>
+
+</ul>
+
+</nav>
+
+</header>
+
+<!-- HERO -->
+
+<section class="gallery-hero">
+
+<div class="gallery-hero-content">
+
+<h1>Property Gallery</h1>
+
+<p>
+Explore the beauty, comfort and views of Ronglyang Lotus Homestay.
+</p>
+
+</div>
+
+</section>
+
+<!-- GALLERY -->
+
+<section class="gallery-section">
+
+<div class="container">
+
+<h2>Our Photo Collection</h2>
+
+<div class="gallery-grid">
+
+<img src="assets/images/gallery/gallery1.jpg" alt="" class="gallery-item">
+<img src="assets/images/gallery/gallery2.jpg" alt="" class="gallery-item">
+<img src="assets/images/gallery/gallery3.jpg" alt="" class="gallery-item">
+<img src="assets/images/gallery/gallery4.jpg" alt="" class="gallery-item">
+<img src="assets/images/gallery/gallery5.jpg" alt="" class="gallery-item">
+<img src="assets/images/gallery/gallery6.jpg" alt="" class="gallery-item">
+<img src="assets/images/gallery/gallery7.jpg" alt="" class="gallery-item">
+<img src="assets/images/gallery/gallery8.jpg" alt="" class="gallery-item">
+<img src="assets/images/gallery/gallery9.jpg" alt="" class="gallery-item">
+<img src="assets/images/gallery/gallery10.jpg" alt="" class="gallery-item">
+<img src="assets/images/gallery/gallery11.jpg" alt="" class="gallery-item">
+<img src="assets/images/gallery/gallery12.jpg" alt="" class="gallery-item">
+
+</div>
+
+</div>
+
+</section>
+
+<!-- LIGHTBOX -->
+
+<div class="lightbox" id="lightbox">
+
+<span class="close-btn">
+&times;
+</span>
+
+<img
+class="lightbox-img"
+id="lightbox-img"
+src=""
+alt=""
+>
+
+</div>
+
+<!-- CTA -->
+
+<section class="cta">
+
+<h2>
+Experience These Views Yourself
+</h2>
+
+<p>
+Book your stay and enjoy the beauty of Gangtok.
+</p>
+
+<a href="contact.html" class="primary-btn">
+Reserve Your Stay
+</a>
+
+</section>
+
+<footer>
+
+<div class="container">
+
+<h3>Ronglyang Lotus Homestay</h3>
+
+<p>
+Gangtok, Sikkim, India
+</p>
+
+<p>
+© 2026 All Rights Reserved
+</p>
+
+</div>
+
+</footer>
+
+<script src="assets/js/app.js"></script>
+
+<script>
+
+const galleryItems =
+document.querySelectorAll('.gallery-item');
+
+const lightbox =
+document.getElementById('lightbox');
+
+const lightboxImg =
+document.getElementById('lightbox-img');
+
+const closeBtn =
+document.querySelector('.close-btn');
+
+galleryItems.forEach(item => {
+
+item.addEventListener('click', () => {
+
+lightbox.style.display = 'flex';
+
+lightboxImg.src = item.src;
+
+});
+
+});
+
+closeBtn.addEventListener('click', () => {
+
+lightbox.style.display = 'none';
+
+});
+
+lightbox.addEventListener('click', (e) => {
+
+if(e.target === lightbox){
+
+lightbox.style.display = 'none';
+
+}
+
+});
+
+</script>
+
+</body>
+</html>
