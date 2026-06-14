@@ -1,27 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Gallery | Ronglyang Lotus Homestay</title>
-
-<meta name="description"
-content="Explore the photo gallery of Ronglyang Lotus Homestay, Gangtok. View our rooms, mountain views, interiors and surroundings.">
-
-<link rel="stylesheet" href="assets/css/style.css">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-</head>
-
-<body>
-
 <header>
 
 <nav class="navbar">
@@ -50,16 +26,17 @@ Book Now
 
 </header>
 
-<!-- HERO -->
+<!-- PAGE HEADER -->
 
-<section class="gallery-hero">
+<section class="gallery-header">
 
-<div class="gallery-hero-content">
+<div class="gallery-header-content">
 
-<h1>Property Gallery</h1>
+<h1>Our Gallery</h1>
 
 <p>
-Explore the beauty, comfort and views of Ronglyang Lotus Homestay.
+Explore Ronglyang Lotus Homestay through beautiful
+moments, mountain views, cozy rooms and peaceful surroundings.
 </p>
 
 </div>
@@ -70,62 +47,71 @@ Explore the beauty, comfort and views of Ronglyang Lotus Homestay.
 
 <section class="gallery-section">
 
-<div class="container">
+<h2 class="section-title">
+Discover Our Property
+</h2>
 
-<h2>Our Photo Collection</h2>
+<div class="gallery-scroll">
 
-<div class="gallery-grid">
+<div class="gallery-card">
+<img src="assets/gallery1.png" alt="Gallery Image">
+</div>
 
-<img src="assets/gallery1.png" alt="" class="gallery-item">
-<img src="assets/gallery2.png" alt="" class="gallery-item">
-<img src="assets/gallery3.png" alt="" class="gallery-item">
-<img src="assets/images/gallery/gallery4.jpg" alt="" class="gallery-item">
-<img src="assets/images/gallery/gallery5.jpg" alt="" class="gallery-item">
-<img src="assets/images/gallery/gallery6.jpg" alt="" class="gallery-item">
-<img src="assets/images/gallery/gallery7.jpg" alt="" class="gallery-item">
-<img src="assets/images/gallery/gallery8.jpg" alt="" class="gallery-item">
-<img src="assets/images/gallery/gallery9.jpg" alt="" class="gallery-item">
-<img src="assets/images/gallery/gallery10.jpg" alt="" class="gallery-item">
-<img src="assets/images/gallery/gallery11.jpg" alt="" class="gallery-item">
-<img src="assets/images/gallery/gallery12.jpg" alt="" class="gallery-item">
+<div class="gallery-card">
+<img src="assets/gallery2.png" alt="Gallery Image">
+</div>
 
+<div class="gallery-card">
+<img src="assets/gallery3.png" alt="Gallery Image">
+</div>
+
+<div class="gallery-card">
+<img src="assets/gallery4.png" alt="Gallery Image">
+</div>
+
+<div class="gallery-card">
+<img src="assets/gallery5.png" alt="Gallery Image">
+</div>
+
+<div class="gallery-card">
+<img src="assets/gallery6.png" alt="Gallery Image">
+</div>
+
+<div class="gallery-card">
+<img src="assets/gallery7.png" alt="Gallery Image">
+</div>
+
+<div class="gallery-card">
+<img src="assets/gallery8.png" alt="Gallery Image">
+</div>
+
+<div class="gallery-card">
+<img src="assets/gallery9.png" alt="Gallery Image">
+</div>
+
+<div class="gallery-card">
+<img src="assets/gallery10.png" alt="Gallery Image">
 </div>
 
 </div>
 
 </section>
 
-<!-- LIGHTBOX -->
-
-<div class="lightbox" id="lightbox">
-
-<span class="close-btn">
-&times;
-</span>
-
-<img
-class="lightbox-img"
-id="lightbox-img"
-src=""
-alt=""
->
-
-</div>
-
 <!-- CTA -->
 
-<section class="cta">
+<section class="gallery-cta">
 
 <h2>
-Experience These Views Yourself
+Ready To Experience Gangtok?
 </h2>
 
 <p>
-Book your stay and enjoy the beauty of Gangtok.
+Book your stay and enjoy breathtaking mountain views,
+comfortable rooms and warm hospitality.
 </p>
 
-<a href="contact.html" class="primary-btn">
-Reserve Your Stay
+<a href="contact.html" class="gallery-btn">
+Book Your Stay
 </a>
 
 </section>
@@ -136,63 +122,10 @@ Reserve Your Stay
 
 <h3>Ronglyang Lotus Homestay</h3>
 
-<p>
-Gangtok, Sikkim, India
-</p>
+<p>Gangtok, Sikkim, India</p>
 
-<p>
-© 2026 All Rights Reserved
-</p>
+<p>© 2026 All Rights Reserved</p>
 
 </div>
 
 </footer>
-
-<script src="assets/js/app.js"></script>
-
-<script>
-
-const galleryItems =
-document.querySelectorAll('.gallery-item');
-
-const lightbox =
-document.getElementById('lightbox');
-
-const lightboxImg =
-document.getElementById('lightbox-img');
-
-const closeBtn =
-document.querySelector('.close-btn');
-
-galleryItems.forEach(item => {
-
-item.addEventListener('click', () => {
-
-lightbox.style.display = 'flex';
-
-lightboxImg.src = item.src;
-
-});
-
-});
-
-closeBtn.addEventListener('click', () => {
-
-lightbox.style.display = 'none';
-
-});
-
-lightbox.addEventListener('click', (e) => {
-
-if(e.target === lightbox){
-
-lightbox.style.display = 'none';
-
-}
-
-});
-
-</script>
-
-</body>
-</html>
