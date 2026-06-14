@@ -1,215 +1,342 @@
-/* HERO */
+/* ==========================
+   ABOUT HERO
+========================== */
 
 .about-hero{
-    height:80vh;
-    background:
-    linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),
-    url("../images/about/homestay-hero.jpg");
-    background-size:cover;
-    background-position:center;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    color:#fff;
+    position: relative;
+    height: 85vh;
+    min-height: 600px;
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-image{
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    z-index: 1;
+}
+
+.hero-overlay{
+    position: absolute;
+    inset: 0;
+
+    background: rgba(0,0,0,0.45);
+
+    z-index: 2;
 }
 
 .about-hero-content{
-    max-width:800px;
-    padding:20px;
+    position: relative;
+    z-index: 3;
+
+    max-width: 900px;
+    padding: 0 20px;
+
+    color: #fff;
 }
 
-.about-hero h1{
-    font-size:3.5rem;
-    margin-bottom:20px;
+.about-hero-content h1{
+    font-size: 4rem;
+    line-height: 1.2;
+    margin-bottom: 25px;
+    font-weight: 700;
 }
 
-.about-hero p{
-    font-size:1.2rem;
-    line-height:1.8;
+.about-hero-content p{
+    font-size: 1.2rem;
+    line-height: 1.8;
+    max-width: 750px;
+    margin: auto;
 }
 
-/* STORY */
+/* ==========================
+   STORY SECTION
+========================== */
 
 .story-section{
-    padding:90px 8%;
+    padding: 100px 8%;
+    background: #fff;
 }
 
 .story-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:60px;
-    align-items:center;
+    max-width: 1300px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    align-items: center;
 }
 
 .story-content h2{
-    font-size:2.5rem;
-    margin-bottom:25px;
-    color:#222;
+    font-size: 3rem;
+    margin-bottom: 25px;
+    color: #111827;
 }
 
 .story-content p{
-    line-height:1.9;
-    color:#555;
-    margin-bottom:20px;
+    color: #555;
+    line-height: 1.9;
+    margin-bottom: 20px;
+    font-size: 1.05rem;
 }
 
 .story-image img{
-    width:100%;
-    border-radius:20px;
-    box-shadow:0 15px 35px rgba(0,0,0,.12);
+    width: 100%;
+    display: block;
+
+    border-radius: 24px;
+
+    box-shadow:
+    0 20px 40px rgba(0,0,0,.08);
 }
 
-/* FEATURES */
-
-.features-section{
-    padding:90px 8%;
-    background:#f8fafc;
-}
+/* ==========================
+   SECTION TITLE
+========================== */
 
 .section-title{
-    text-align:center;
-    font-size:2.5rem;
-    margin-bottom:60px;
+    text-align: center;
+    font-size: 2.8rem;
+    margin-bottom: 60px;
+    color: #111827;
+}
+
+/* ==========================
+   WHY CHOOSE US
+========================== */
+
+.features-section{
+    padding: 100px 8%;
+    background: #f8fafc;
 }
 
 .features-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:30px;
+    max-width: 1300px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+    gap: 30px;
 }
 
 .feature-card{
-    background:#fff;
-    padding:30px;
-    border-radius:18px;
-    box-shadow:0 10px 25px rgba(0,0,0,.08);
-    transition:.3s;
+    background: #fff;
+
+    padding: 35px;
+
+    border-radius: 20px;
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.06);
+
+    transition: .3s;
 }
 
 .feature-card:hover{
-    transform:translateY(-8px);
+    transform: translateY(-8px);
 }
 
 .feature-card h3{
-    margin-bottom:15px;
-    color:#1e40af;
+    color: #b88746;
+    margin-bottom: 15px;
+    font-size: 1.3rem;
 }
 
 .feature-card p{
-    color:#555;
-    line-height:1.8;
+    color: #555;
+    line-height: 1.8;
 }
 
-/* FACILITIES */
+/* ==========================
+   FACILITIES
+========================== */
 
 .facilities-section{
-    padding:90px 8%;
+    padding: 100px 8%;
+    background: #fff;
 }
 
 .facilities-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:20px;
+    max-width: 1200px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    gap: 20px;
 }
 
 .facility-item{
-    background:#fff;
-    padding:18px 20px;
-    border-radius:12px;
-    box-shadow:0 8px 20px rgba(0,0,0,.08);
-    font-weight:500;
+    background: #f8fafc;
+
+    padding: 18px 20px;
+
+    border-radius: 14px;
+
+    font-weight: 500;
+
+    box-shadow:
+    0 6px 20px rgba(0,0,0,.05);
 }
 
-/* ATTRACTIONS */
+/* ==========================
+   ATTRACTIONS
+========================== */
 
 .attractions-section{
-    padding:90px 8%;
-    background:#f8fafc;
+    padding: 100px 8%;
+    background: #f8fafc;
 }
 
 .attractions-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-    gap:35px;
+    max-width: 1400px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
+    gap: 35px;
 }
 
 .attraction-card{
-    background:#fff;
-    border-radius:20px;
-    overflow:hidden;
-    box-shadow:0 15px 30px rgba(0,0,0,.08);
-    transition:.3s;
+    background: #fff;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.08);
+
+    transition: .3s;
 }
 
 .attraction-card:hover{
-    transform:translateY(-8px);
+    transform: translateY(-8px);
 }
 
 .attraction-card img{
-    width:100%;
-    height:240px;
-    object-fit:cover;
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    display: block;
 }
 
 .attraction-content{
-    padding:25px;
+    padding: 25px;
 }
 
 .attraction-content h3{
-    margin-bottom:10px;
+    margin-bottom: 10px;
+    color: #111827;
 }
 
 .distance{
-    color:#2563eb;
-    font-weight:600;
-    margin-bottom:12px;
+    color: #b88746;
+    font-weight: 600;
+    margin-bottom: 12px;
 }
 
-/* CTA */
+.attraction-content p{
+    color: #555;
+}
+
+/* ==========================
+   CTA
+========================== */
 
 .about-cta{
-    padding:100px 8%;
-    text-align:center;
-    background:#1e293b;
-    color:white;
+    padding: 100px 8%;
+
+    background: #111827;
+
+    color: #fff;
+
+    text-align: center;
 }
 
 .about-cta h2{
-    font-size:2.5rem;
-    margin-bottom:20px;
+    font-size: 2.8rem;
+    margin-bottom: 20px;
 }
 
 .about-cta p{
-    max-width:700px;
-    margin:auto;
-    margin-bottom:30px;
+    max-width: 750px;
+    margin: auto auto 30px;
+    line-height: 1.9;
 }
 
 .about-btn{
-    display:inline-block;
-    background:white;
-    color:#111;
-    padding:15px 35px;
-    border-radius:50px;
-    text-decoration:none;
-    font-weight:600;
+    display: inline-block;
+
+    background: #b88746;
+    color: #fff;
+
+    padding: 15px 35px;
+
+    border-radius: 50px;
+
+    font-weight: 600;
+
+    transition: .3s;
 }
 
-/* MOBILE */
-
-@media(max-width:768px){
-
-.story-grid{
-    grid-template-columns:1fr;
+.about-btn:hover{
+    transform: translateY(-3px);
 }
 
-.about-hero h1{
-    font-size:2.3rem;
+/* ==========================
+   MOBILE
+========================== */
+
+@media (max-width: 900px){
+
+    .story-grid{
+        grid-template-columns: 1fr;
+    }
+
+    .about-hero{
+        height: 70vh;
+    }
+
+    .about-hero-content h1{
+        font-size: 2.6rem;
+    }
+
+    .section-title{
+        font-size: 2.2rem;
+    }
+
+    .story-content h2{
+        font-size: 2.2rem;
+    }
 }
 
-.section-title{
-    font-size:2rem;
-}
+@media (max-width: 600px){
 
+    .about-hero-content h1{
+        font-size: 2rem;
+    }
+
+    .about-hero-content p{
+        font-size: 1rem;
+    }
+
+    .attractions-grid{
+        grid-template-columns: 1fr;
+    }
+
+    .features-grid{
+        grid-template-columns: 1fr;
+    }
 }
