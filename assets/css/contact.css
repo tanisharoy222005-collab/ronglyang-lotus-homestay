@@ -1,218 +1,293 @@
-/* HERO */
+/* ==========================
+   ROOM DETAILS HERO
+========================== */
 
-.contact-hero{
-    position:relative;
-    height:75vh;
-    overflow:hidden;
+.room-details-page{
+    position: relative;
 
-    background:
-    linear-gradient(
-    rgba(0,0,0,.55),
-    rgba(0,0,0,.55)
-    ),
-    url("../gallery2.png");
-
-    background-size:cover;
-    background-position:center;
+    height: 75vh;
+    min-height: 550px;
 
     display:flex;
     justify-content:center;
     align-items:center;
+
     text-align:center;
+
+    background:
+    linear-gradient(
+        rgba(0,0,0,.45),
+        rgba(0,0,0,.45)
+    ),
+    url("../gallery3.png");
+
+    background-size:cover;
+    background-position:center;
+
+    color:#fff;
 }
 
-.contact-hero-content{
+.hero-overlay{
+    position:absolute;
+    inset:0;
+}
+
+.room-details-page .container{
     position:relative;
     z-index:2;
-    color:white;
-    max-width:800px;
-    padding:20px;
+    max-width:900px;
 }
 
-.contact-hero-content span{
-    display:inline-block;
-    margin-bottom:15px;
-    letter-spacing:2px;
-    text-transform:uppercase;
-    opacity:.9;
-}
-
-.contact-hero-content h1{
+.page-title{
     font-size:4rem;
     margin-bottom:20px;
+    font-weight:700;
 }
 
-.contact-hero-content p{
+.page-subtitle{
     font-size:1.2rem;
     line-height:1.8;
+    max-width:700px;
+    margin:auto;
 }
 
-/* CONTACT */
+/* ==========================
+   ROOM SECTIONS
+========================== */
 
-.contact-section{
+.room-detail-section{
     padding:100px 8%;
+    background:#fff;
+}
+
+.alt-bg{
     background:#f8fafc;
 }
 
-.contact-container{
-    max-width:1300px;
+.room-details-grid{
+    max-width:1400px;
     margin:auto;
 
-    display:grid;
-    grid-template-columns:1fr 1.3fr;
-    gap:50px;
-}
-
-.contact-info h2,
-.contact-form-wrapper h2{
-    margin-bottom:20px;
-    font-size:2rem;
-}
-
-.contact-description{
-    margin-bottom:30px;
-    color:#666;
-}
-
-.info-card{
-    background:white;
-    padding:25px;
-    border-radius:18px;
-    margin-bottom:20px;
-    box-shadow:0 10px 30px rgba(0,0,0,.06);
-}
-
-.info-card h3{
-    margin-bottom:10px;
-}
-
-.whatsapp-btn{
-    display:inline-block;
-    background:#25D366;
-    color:white;
-    padding:15px 30px;
-    border-radius:50px;
-    margin-top:10px;
-    font-weight:600;
-}
-
-/* FORM */
-
-.contact-form-wrapper{
-    background:white;
-    padding:40px;
-    border-radius:25px;
-    box-shadow:0 15px 35px rgba(0,0,0,.08);
-}
-
-.contact-form{
-    display:flex;
-    flex-direction:column;
-    gap:20px;
-}
-
-.form-row{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:20px;
+    gap:60px;
+    align-items:center;
 }
 
-.contact-form input,
-.contact-form select,
-.contact-form textarea{
+/* ==========================
+   IMAGE GALLERY
+========================== */
+
+.room-gallery{
     width:100%;
-    padding:16px;
-    border:1px solid #ddd;
-    border-radius:12px;
-    font-size:1rem;
 }
 
-.contact-form textarea{
-    resize:none;
+.gallery-scroll{
+    display:flex;
+    gap:18px;
+
+    overflow-x:auto;
+
+    scroll-behavior:smooth;
+
+    padding-bottom:10px;
 }
 
-.contact-form button{
-    border:none;
+.gallery-scroll::-webkit-scrollbar{
+    height:8px;
+}
+
+.gallery-scroll::-webkit-scrollbar-thumb{
     background:#b88746;
-    color:white;
-    padding:16px;
-    border-radius:12px;
-    cursor:pointer;
-    font-size:1rem;
-    font-weight:600;
+    border-radius:50px;
 }
 
-/* MAP */
+.gallery-scroll img{
+    width:450px;
+    height:320px;
 
-.map-section{
-    padding:100px 8%;
-}
+    flex-shrink:0;
 
-.map-section h2{
-    text-align:center;
-    margin-bottom:40px;
-}
+    object-fit:cover;
 
-.map-container{
-    max-width:1300px;
-    margin:auto;
-}
-
-.map-container iframe{
-    width:100%;
-    height:500px;
-    border:none;
     border-radius:20px;
-    box-shadow:0 15px 35px rgba(0,0,0,.08);
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.12);
+
+    transition:.4s;
 }
 
-/* CTA */
-
-.contact-cta{
-    padding:100px 8%;
-    text-align:center;
-    background:#1e293b;
-    color:white;
+.gallery-scroll img:hover{
+    transform:scale(1.04);
 }
 
-.contact-cta h2{
-    font-size:2.5rem;
+/* ==========================
+   ROOM CONTENT
+========================== */
+
+.room-details-grid h2{
+    font-size:3rem;
+    line-height:1.3;
     margin-bottom:20px;
+    color:#111827;
 }
 
-.contact-cta p{
+.room-price{
+    font-size:2rem;
+    font-weight:700;
+    color:#b88746;
+    margin:20px 0;
+}
+
+.room-details-grid p{
+    color:#555;
+    line-height:1.9;
+    font-size:1.05rem;
+}
+
+.feature-list{
+    margin:30px 0;
+    padding-left:20px;
+}
+
+.feature-list li{
+    margin-bottom:12px;
+    color:#444;
+    line-height:1.7;
+}
+
+.primary-btn{
+    display:inline-block;
+
+    background:#b88746;
+    color:#fff;
+
+    padding:15px 35px;
+
+    border-radius:50px;
+
+    text-decoration:none;
+    font-weight:600;
+
+    transition:.3s;
+}
+
+.primary-btn:hover{
+    transform:translateY(-3px);
+}
+
+/* ==========================
+   CHECKOUT PAGE
+========================== */
+
+.checkout-page{
+    padding:100px 20px;
+    min-height:100vh;
+    background:#f5f5f5;
+}
+
+.checkout-container{
     max-width:700px;
     margin:auto;
-    margin-bottom:30px;
+    background:#fff;
+    padding:40px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
 }
 
-.cta-btn{
-    display:inline-block;
+.checkout-container h1{
+    margin-bottom:25px;
+}
+
+.checkout-container form{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.checkout-container input,
+.checkout-container select{
+    padding:15px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    font-size:16px;
+}
+
+.checkout-container button{
+    padding:15px;
+    background:#b88746;
+    color:white;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+.checkout-container button:hover{
+    opacity:.9;
+}
+
+/* ==========================
+   SUCCESS PAGE
+========================== */
+
+.success-page{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    background:#f7f7f7;
+}
+
+.success-box{
     background:white;
-    color:#111;
-    padding:15px 35px;
-    border-radius:50px;
-    font-weight:600;
+    padding:50px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
 }
 
-/* MOBILE */
+/* ==========================
+   MOBILE
+========================== */
 
 @media(max-width:900px){
 
-.contact-container{
-    grid-template-columns:1fr;
+    .room-details-grid{
+        grid-template-columns:1fr;
+    }
+
+    .page-title{
+        font-size:2.8rem;
+    }
+
+    .room-details-grid h2{
+        font-size:2.2rem;
+    }
+
+    .gallery-scroll img{
+        width:320px;
+        height:240px;
+    }
 }
 
-.form-row{
-    grid-template-columns:1fr;
-}
+@media(max-width:600px){
 
-.contact-hero-content h1{
-    font-size:2.6rem;
-}
+    .room-details-page{
+        min-height:450px;
+    }
 
-.map-container iframe{
-    height:350px;
-}
+    .page-title{
+        font-size:2.2rem;
+    }
 
+    .page-subtitle{
+        font-size:1rem;
+    }
+
+    .gallery-scroll img{
+        width:280px;
+        height:220px;
+    }
 }
