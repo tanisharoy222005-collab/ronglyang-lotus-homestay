@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -9,6 +10,20 @@
 <title>Dashboard | Ronglyang Lotus Admin</title>
 
 <link rel="stylesheet" href="../assets/css/admin.css">
+
+<script>
+
+/* LOGIN PROTECTION */
+
+if (
+localStorage.getItem("adminLoggedIn") !== "true"
+) {
+
+window.location.href = "login.html";
+
+}
+
+</script>
 
 </head>
 
@@ -167,4 +182,5 @@ Open →
 <script src="../assets/js/admin.js"></script>
 
 </body>
+
 </html>
