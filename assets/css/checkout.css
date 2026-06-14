@@ -1,85 +1,57 @@
-/* ====================================
-   CHECKOUT PAGE
-==================================== */
-
-.checkout-page{
-    padding:100px 20px;
-    min-height:100vh;
-    background:#f5f5f5;
-}
-
-.checkout-container{
-    max-width:700px;
-    margin:auto;
-    background:#fff;
-    padding:40px;
-    border-radius:20px;
-    box-shadow:0 10px 30px rgba(0,0,0,.08);
-}
-
-.checkout-container h1{
-    margin-bottom:25px;
-}
-
-.checkout-container form{
-    display:flex;
-    flex-direction:column;
-    gap:15px;
-}
-
-.checkout-container input,
-.checkout-container select{
-    padding:15px;
-    border:1px solid #ddd;
-    border-radius:10px;
-    font-size:16px;
-}
-
-.checkout-container button{
-    padding:15px;
-    background:#b88746;
-    color:#fff;
-    border:none;
-    border-radius:10px;
-    cursor:pointer;
-    font-size:16px;
-    font-weight:600;
-    transition:.3s;
-}
-
-.checkout-container button:hover{
-    opacity:.9;
-}
-
-/* ====================================
-   ROOM DETAILS PAGE
-==================================== */
+/* =========================================
+   HERO SECTION
+========================================= */
 
 .room-details-page{
-    padding:120px 8% 60px;
-    background:#f8fafc;
+    position:relative;
+    height:75vh;
+    min-height:550px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
     text-align:center;
+
+    background:
+    linear-gradient(
+    rgba(0,0,0,.55),
+    rgba(0,0,0,.55)
+    ),
+    url("../gallery15.png");
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+}
+
+.room-details-page .container{
+    position:relative;
+    z-index:2;
+    max-width:900px;
+    padding:20px;
 }
 
 .page-title{
-    font-size:3rem;
-    margin-bottom:15px;
-    color:#111827;
+    color:#fff;
+    font-size:4rem;
+    font-weight:700;
+    margin-bottom:20px;
 }
 
 .page-subtitle{
-    color:#64748b;
-    max-width:700px;
+    color:#fff;
+    font-size:1.2rem;
+    line-height:1.9;
+    max-width:750px;
     margin:auto;
-    line-height:1.8;
 }
 
-/* ====================================
-   ROOM SECTION
-==================================== */
+/* =========================================
+   ROOM SECTIONS
+========================================= */
 
 .room-detail-section{
-    padding:90px 8%;
+    padding:100px 8%;
     background:#fff;
 }
 
@@ -87,66 +59,96 @@
     background:#f8fafc;
 }
 
+.container{
+    max-width:1300px;
+    margin:auto;
+}
+
 .room-details-grid{
     display:grid;
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:1.1fr 1fr;
     gap:60px;
-    align-items:start;
+    align-items:center;
 }
 
-/* ====================================
-   MAIN ROOM IMAGE
-==================================== */
+/* =========================================
+   ROOM IMAGE GALLERY
+========================================= */
 
-.room-detail-image{
+.room-gallery{
     width:100%;
-    height:550px;
-    object-fit:cover;
-    display:block;
-    border-radius:20px;
-    box-shadow:0 15px 35px rgba(0,0,0,.12);
 }
 
-/* ====================================
-   IMAGE GALLERY
-==================================== */
-
-.gallery-row{
+.gallery-scroll{
     display:flex;
-    gap:15px;
-    margin-top:15px;
+    gap:20px;
+
+    overflow-x:auto;
+    scroll-behavior:smooth;
+
+    padding-bottom:15px;
+
+    scroll-snap-type:x mandatory;
 }
 
-.gallery-row img{
-    flex:1;
-    height:180px;
+.gallery-scroll::-webkit-scrollbar{
+    height:8px;
+}
+
+.gallery-scroll::-webkit-scrollbar-thumb{
+    background:#b88746;
+    border-radius:50px;
+}
+
+.gallery-scroll::-webkit-scrollbar-track{
+    background:#e5e7eb;
+    border-radius:50px;
+}
+
+.gallery-card{
+    flex:0 0 100%;
+    scroll-snap-align:start;
+
+    height:450px;
+
+    border-radius:24px;
+    overflow:hidden;
+
+    background:#fff;
+
+    box-shadow:
+    0 20px 40px rgba(0,0,0,.10);
+}
+
+.gallery-card img{
+    width:100%;
+    height:100%;
+
     object-fit:cover;
-    border-radius:15px;
     display:block;
-    box-shadow:0 8px 20px rgba(0,0,0,.08);
-    transition:.3s ease;
+
+    transition:.5s ease;
 }
 
-.gallery-row img:hover{
-    transform:scale(1.03);
+.gallery-card:hover img{
+    transform:scale(1.05);
 }
 
-/* ====================================
+/* =========================================
    ROOM CONTENT
-==================================== */
+========================================= */
 
 .room-details-grid h2{
-    font-size:2.8rem;
-    line-height:1.3;
-    color:#111827;
+    font-size:2.5rem;
     margin-bottom:20px;
+    color:#111827;
 }
 
 .room-price{
-    font-size:2.2rem;
+    font-size:2rem;
     font-weight:700;
     color:#b88746;
-    margin:20px 0;
+    margin-bottom:25px;
 }
 
 .room-details-grid p{
@@ -155,87 +157,183 @@
     margin-bottom:25px;
 }
 
-/* ====================================
+/* =========================================
    FEATURES
-==================================== */
+========================================= */
 
 .feature-list{
     list-style:none;
     padding:0;
-    margin:0 0 35px;
+    margin:30px 0;
 }
 
 .feature-list li{
-    padding:10px 0;
-    border-bottom:1px solid #eee;
-    font-size:1rem;
-    color:#333;
+    background:#f8fafc;
+
+    margin-bottom:12px;
+    padding:14px 18px;
+
+    border-radius:12px;
+
+    font-weight:500;
+
+    box-shadow:
+    0 5px 15px rgba(0,0,0,.04);
 }
 
-/* ====================================
-   BUTTON
-==================================== */
+/* =========================================
+   BUTTONS
+========================================= */
 
 .primary-btn{
     display:inline-block;
+
     background:#b88746;
     color:#fff;
-    padding:15px 35px;
+
+    padding:16px 34px;
+
     border-radius:50px;
-    text-decoration:none;
+
     font-weight:600;
+
     transition:.3s;
 }
 
 .primary-btn:hover{
-    transform:translateY(-3px);
+    transform:translateY(-4px);
+
+    box-shadow:
+    0 12px 25px rgba(184,135,70,.30);
 }
 
-/* ====================================
+/* =========================================
+   CHECKOUT PAGE
+========================================= */
+
+.checkout-page{
+    padding:100px 20px;
+    background:#f5f5f5;
+    min-height:100vh;
+}
+
+.checkout-container{
+    max-width:750px;
+    margin:auto;
+
+    background:#fff;
+
+    padding:40px;
+
+    border-radius:20px;
+
+    box-shadow:
+    0 15px 40px rgba(0,0,0,.08);
+}
+
+.checkout-container h1{
+    margin-bottom:30px;
+}
+
+.checkout-container form{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.checkout-container input,
+.checkout-container select{
+    padding:16px;
+    border:1px solid #ddd;
+    border-radius:12px;
+    font-size:16px;
+}
+
+.checkout-container button{
+    padding:16px;
+
+    background:#b88746;
+    color:white;
+
+    border:none;
+    border-radius:12px;
+
+    cursor:pointer;
+    font-size:16px;
+    font-weight:600;
+}
+
+.checkout-container button:hover{
+    opacity:.9;
+}
+
+/* =========================================
    SUCCESS PAGE
-==================================== */
+========================================= */
 
 .success-page{
     display:flex;
     justify-content:center;
     align-items:center;
-    height:100vh;
+
+    min-height:100vh;
     background:#f7f7f7;
 }
 
 .success-box{
-    background:#fff;
-    padding:50px;
+    background:white;
+
+    padding:60px 40px;
+
     border-radius:20px;
+
     text-align:center;
-    box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+    box-shadow:
+    0 15px 35px rgba(0,0,0,.08);
 }
 
 .success-box h1{
-    margin-bottom:15px;
+    margin-bottom:20px;
 }
 
-.success-box p{
-    color:#555;
-}
-
-/* ====================================
+/* =========================================
    MOBILE
-==================================== */
+========================================= */
 
-@media(max-width:900px){
+@media(max-width:992px){
 
     .room-details-grid{
         grid-template-columns:1fr;
         gap:40px;
     }
 
-    .room-detail-image{
-        height:350px;
+    .gallery-card{
+        height:380px;
     }
 
-    .gallery-row img{
-        height:120px;
+    .page-title{
+        font-size:3rem;
+    }
+}
+
+@media(max-width:768px){
+
+    .room-details-page{
+        height:65vh;
+        min-height:450px;
+    }
+
+    .page-title{
+        font-size:2.3rem;
+    }
+
+    .page-subtitle{
+        font-size:1rem;
+    }
+
+    .gallery-card{
+        height:280px;
     }
 
     .room-details-grid h2{
@@ -243,33 +341,14 @@
     }
 
     .room-price{
-        font-size:1.8rem;
+        font-size:1.6rem;
     }
 
-    .page-title{
-        font-size:2.3rem;
-    }
-}
-
-@media(max-width:600px){
-
-    .room-detail-image{
-        height:280px;
+    .room-detail-section{
+        padding:70px 5%;
     }
 
-    .gallery-row{
-        gap:10px;
-    }
-
-    .gallery-row img{
-        height:90px;
-    }
-
-    .room-details-grid h2{
-        font-size:1.7rem;
-    }
-
-    .room-price{
-        font-size:1.5rem;
+    .checkout-container{
+        padding:25px;
     }
 }
