@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
@@ -12,17 +11,9 @@
 <link rel="stylesheet" href="../assets/css/admin.css">
 
 <script>
-
-/* LOGIN PROTECTION */
-
-if (
-localStorage.getItem("adminLoggedIn") !== "true"
-) {
-
-window.location.href = "login.html";
-
+if (localStorage.getItem("adminLoggedIn") !== "true") {
+    window.location.href = "login.html";
 }
-
 </script>
 
 </head>
@@ -31,125 +22,93 @@ window.location.href = "login.html";
 
 <div class="admin-layout">
 
-<!-- SIDEBAR -->
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
 
-<aside class="sidebar">
+        <h2>Admin Panel</h2>
 
-<h2>Admin Panel</h2>
+        <ul>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="rooms.html">Rooms</a></li>
+            <li><a href="bookings.html">Bookings</a></li>
+            <li><a href="#" onclick="logout()">Logout</a></li>
+        </ul>
 
-<ul>
+    </aside>
 
-<li>
-<a href="dashboard.html">
-Dashboard
-</a>
-</li>
+    <!-- CONTENT -->
+    <main class="content">
 
-<li>
-<a href="rooms.html">
-Rooms
-</a>
-</li>
+        <h1>Dashboard</h1>
 
-<li>
-<a href="bookings.html">
-Bookings
-</a>
-</li>
+        <div class="cards">
 
+            <div class="card">
+                <h3>Total Rooms</h3>
+                <p id="totalRooms">0</p>
+            </div>
 
-<li>
-<a href="#" onclick="logout()">
-Logout
-</a>
-</li>
+            <div class="card">
+                <h3>Total Bookings</h3>
+                <p id="totalBookings">0</p>
+            </div>
 
-</ul>
+        </div>
 
-</aside>
+        <div style="margin-top:40px;">
 
-<!-- MAIN CONTENT -->
+            <h2 style="margin-bottom:20px;">
+                Quick Actions
+            </h2>
 
-<main class="content">
+            <div class="cards">
 
-<h1>Dashboard</h1>
+                <div class="card">
 
-<div class="cards">
+                    <h3>Manage Rooms</h3>
 
-<div class="card">
+                    <p style="font-size:16px;">
+                        Update room details and pricing.
+                    </p>
 
-<h3>Total Rooms</h3>
+                    <br>
 
-<p id="totalRooms">
-0
-</p>
+                    <a href="rooms.html">
+                        Open →
+                    </a>
 
-</div>
+                </div>
 
-<div class="card">
+                <div class="card">
 
-<h3>Total Bookings</h3>
+                    <h3>View Bookings</h3>
 
-<p id="totalBookings">
-0
-</p>
+                    <p style="font-size:16px;">
+                        Check guest reservations.
+                    </p>
 
-</div>
+                    <br>
 
+                    <a href="bookings.html">
+                        Open →
+                    </a>
 
+                </div>
 
-</div>
+            </div>
 
-<!-- QUICK ACTIONS -->
+        </div>
 
-<div style="margin-top:40px;">
-
-<h2 style="margin-bottom:20px;">
-Quick Actions
-</h2>
-
-<div class="cards">
-
-<div class="card">
-
-<h3>Manage Rooms</h3>
-
-<p style="font-size:16px;">
-Update room details and pricing.
-</p>
-
-<br>
-
-<a href="rooms.html">
-Open →
-</a>
+    </main>
 
 </div>
 
-<div class="card">
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
 
-<h3>View Bookings</h3>
-
-<p style="font-size:16px;">
-Check guest reservations.
-</p>
-
-<br>
-
-<a href="bookings.html">
-Open →
-</a>
-
-</div>
-
-</div>
-
-</main>
-
-</div>
-
+<script src="../assets/js/firebase.js"></script>
 <script src="../assets/js/admin.js"></script>
 
 </body>
-
 </html>
