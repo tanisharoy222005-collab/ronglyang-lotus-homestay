@@ -28,15 +28,26 @@ if (localStorage.getItem("adminLoggedIn") !== "true") {
         <h2>Admin Panel</h2>
 
         <ul>
-            <li><a href="dashboard.html">Dashboard</a></li>
-            <li><a href="rooms.html">Rooms</a></li>
-            <li><a href="bookings.html">Bookings</a></li>
-            <li><a href="#" onclick="logout()">Logout</a></li>
+            <li>
+                <a href="dashboard.html">Dashboard</a>
+            </li>
+
+            <li>
+                <a href="rooms.html">Rooms</a>
+            </li>
+
+            <li>
+                <a href="bookings.html">Bookings</a>
+            </li>
+
+            <li>
+                <a href="#" onclick="logout()">Logout</a>
+            </li>
         </ul>
 
     </aside>
 
-    <!-- CONTENT -->
+    <!-- MAIN CONTENT -->
     <main class="content">
 
         <h1>Dashboard</h1>
@@ -45,12 +56,12 @@ if (localStorage.getItem("adminLoggedIn") !== "true") {
 
             <div class="card">
                 <h3>Total Rooms</h3>
-                <p id="totalRooms">0</p>
+                <p id="totalRooms">Loading...</p>
             </div>
 
             <div class="card">
                 <h3>Total Bookings</h3>
-                <p id="totalBookings">0</p>
+                <p id="totalBookings">Loading...</p>
             </div>
 
         </div>
@@ -103,12 +114,14 @@ if (localStorage.getItem("adminLoggedIn") !== "true") {
 
 </div>
 
-<!-- Firebase -->
+<!-- FIREBASE -->
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
 
+<!-- YOUR FILES -->
 <script src="../assets/js/firebase.js"></script>
 <script src="../assets/js/admin.js"></script>
 
 </body>
+
 </html>
