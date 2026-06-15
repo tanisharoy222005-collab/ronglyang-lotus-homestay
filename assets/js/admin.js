@@ -1,4 +1,3 @@
-
 // =====================================
 // ADMIN PANEL
 // =====================================
@@ -11,20 +10,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (form) {
 
-        const emailInput =
-            document.getElementById("email");
-
-        const passwordInput =
-            document.getElementById("password");
-
-        const errorText =
-            document.getElementById("loginError");
-
-        const modeText =
-            document.getElementById("modeText");
-
-        const submitBtn =
-            document.getElementById("submitBtn");
+        const emailInput = document.getElementById("email");
+        const passwordInput = document.getElementById("password");
+        const errorText = document.getElementById("loginError");
+        const modeText = document.getElementById("modeText");
+        const submitBtn = document.getElementById("submitBtn");
 
         const savedEmail =
             localStorage.getItem("adminEmail");
@@ -47,7 +37,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
             submitBtn.textContent =
                 "Login";
-
         }
 
         form.addEventListener("submit", (e) => {
@@ -65,8 +54,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const storedPassword =
                 localStorage.getItem("adminPassword");
-
-            // CREATE ACCOUNT
 
             if (!storedEmail || !storedPassword) {
 
@@ -91,8 +78,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            // LOGIN
-
             if (
                 email === storedEmail &&
                 password === storedPassword
@@ -110,14 +95,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 errorText.textContent =
                     "Invalid Email or Password";
-
             }
 
         });
-
     }
-
-    // LOAD PAGE DATA
 
     loadDashboardCounts();
     loadBookings();
@@ -137,37 +118,6 @@ function logout() {
 
     window.location.href =
         "login.html";
-
-}
-
-// =====================================
-// RESET ADMIN
-// =====================================
-
-function resetAdmin() {
-
-    if (
-        confirm(
-            "Delete current admin account?"
-        )
-    ) {
-
-        localStorage.removeItem(
-            "adminEmail"
-        );
-
-        localStorage.removeItem(
-            "adminPassword"
-        );
-
-        localStorage.removeItem(
-            "adminLoggedIn"
-        );
-
-        location.reload();
-
-    }
-
 }
 
 // =====================================
@@ -177,74 +127,44 @@ function resetAdmin() {
 function loadDashboardCounts() {
 
     const totalRooms =
-        document.getElementById(
-            "totalRooms"
-        );
+        document.getElementById("totalRooms");
 
     const totalBookings =
-        document.getElementById(
-            "totalBookings"
-        );
+        document.getElementById("totalBookings");
 
-    if (
-        !totalRooms &&
-        !totalBookings
-    ) return;
+    if (totalRooms) {
 
-    // TOTAL ROOMS
+        db.ref("rooms")
+            .on("value", (snapshot) => {
 
-    db.ref("rooms")
-        .on("value", (snapshot) => {
-
-            const rooms =
-                snapshot.val();
-
-            if (
-                rooms &&
-                totalRooms
-            ) {
+                const rooms =
+                    snapshot.val();
 
                 totalRooms.textContent =
-                    Object.keys(rooms).length;
+                    rooms
+                    ? Object.keys(rooms).length
+                    : "0";
+            });
+    }
 
-            } else if (totalRooms) {
+    if (totalBookings) {
 
-                totalRooms.textContent =
-                    "0";
+        db.ref("bookings")
+            .on("value", (snapshot) => {
 
-            }
-
-        });
-
-    // TOTAL BOOKINGS
-
-    db.ref("bookings")
-        .on("value", (snapshot) => {
-
-            const bookings =
-                snapshot.val();
-
-            if (
-                bookings &&
-                totalBookings
-            ) {
+                const bookings =
+                    snapshot.val();
 
                 totalBookings.textContent =
-                    Object.keys(bookings).length;
-
-            } else if (totalBookings) {
-
-                totalBookings.textContent =
-                    "0";
-
-            }
-
-        });
-
+                    bookings
+                    ? Object.keys(bookings).length
+                    : "0";
+            });
+    }
 }
 
 // =====================================
-// BOOKINGS TABLE
+// BOOKINGS
 // =====================================
 
 function loadBookings() {
@@ -293,18 +213,15 @@ function loadBookings() {
                         <td>${booking.checkout || ""}</td>
                     </tr>
                     `;
-
                 });
 
             table.innerHTML =
                 html;
-
         });
-
 }
 
 // =====================================
-// ROOMS TABLE
+// LOAD ROOMS
 // =====================================
 
 function loadRooms() {
@@ -346,9 +263,7 @@ function loadRooms() {
                     html += `
                     <tr>
 
-                        <td>
-                            ${room.name}
-                        </td>
+                        <td>${room.name}</td>
 
                         <td>
                             <input
@@ -359,31 +274,96 @@ function loadRooms() {
                         </td>
 
                         <td>
-                            ${room.status}
-                        </td>
+                            <select id="status-${key}">
+                                <option value="Available"
+                                ${room.status === "Available" ? "selected" : ""}>
+                                Available
+                                </option>
 
-                        <td>
-                            <button
-                                onclick="updateRoomPrice('${key}')"
-                            >
-                                Save
-                            </button>
+                                <option value="Booked"
+                                ${room.status === "Booked" ? "selected" : ""}>
+                                Booked
+                                </option>
+
+                                <option value="Maintenance"
+                                ${room.status === "Maintenance" ? "selected" : ""}>
+                                Maintenance
+                                </option>
+                            </select>
                         </td>
 
                     </tr>
                     `;
-
                 });
 
             roomTable.innerHTML =
                 html;
-
         });
-
 }
 
 // =====================================
-// UPDATE ROOM PRICE
+// SAVE ALL ROOMS
+// =====================================
+
+function saveRooms() {
+
+    db.ref("rooms")
+        .once("value")
+        .then((snapshot) => {
+
+            const rooms =
+                snapshot.val();
+
+            if (!rooms) {
+
+                alert("No rooms found");
+                return;
+            }
+
+            const updates = {};
+
+            Object.keys(rooms)
+                .forEach((key) => {
+
+                    updates[key] = {
+
+                        ...rooms[key],
+
+                        price: Number(
+                            document.getElementById(
+                                `price-${key}`
+                            ).value
+                        ),
+
+                        status:
+                            document.getElementById(
+                                `status-${key}`
+                            ).value
+                    };
+                });
+
+            db.ref("rooms")
+                .update(updates)
+                .then(() => {
+
+                    alert(
+                        "Rooms updated successfully"
+                    );
+
+                })
+                .catch((error) => {
+
+                    console.error(error);
+
+                    alert(
+                        "Failed to save rooms"
+                    );
+                });
+        });
+}
+
+// =====================================
+// UPDATE SINGLE ROOM
 // =====================================
 
 function updateRoomPrice(key) {
@@ -393,30 +373,31 @@ function updateRoomPrice(key) {
             `price-${key}`
         ).value;
 
-    db.ref(
-        "rooms/" + key
-    )
-    .update({
+    const status =
+        document.getElementById(
+            `status-${key}`
+        ).value;
 
-        price:
-            Number(newPrice)
+    db.ref("rooms/" + key)
+        .update({
 
-    })
-    .then(() => {
+            price: Number(newPrice),
+            status: status
 
-        alert(
-            "Room price updated successfully"
-        );
+        })
+        .then(() => {
 
-    })
-    .catch((error) => {
+            alert(
+                "Room updated successfully"
+            );
 
-        console.error(error);
+        })
+        .catch((error) => {
 
-        alert(
-            "Failed to update room price"
-        );
+            console.error(error);
 
-    });
-
+            alert(
+                "Failed to update room"
+            );
+        });
 }
