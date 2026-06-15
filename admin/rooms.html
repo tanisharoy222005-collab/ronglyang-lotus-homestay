@@ -1,104 +1,91 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
-<title>
-Manage Rooms
-</title>
-
-<link rel="stylesheet"
-href="../assets/css/admin.css">
-
-</head>
-
-<body>
-
-<div class="admin-layout">
-
-<aside class="sidebar">
-
-<h2>Admin Panel</h2>
-
-<ul>
-
-<li><a href="dashboard.html">Dashboard</a></li>
-
-<li><a href="rooms.html">Rooms</a></li>
-
-<li><a href="bookings.html">Bookings</a></li>
-
-<li><a href="offers.html">Offers</a></li>
-
-</ul>
-
-</aside>
-
-<main class="content">
-
-<h1>Manage Rooms</h1>
-
-<table>
-
-<thead>
+<tbody id="roomsTable">
 
 <tr>
+<td>Deluxe Double Room</td>
 
-<th>Room</th>
+<td>
+<input
+type="number"
+id="room1Price"
+value="1549"
+>
+</td>
 
-<th>Price</th>
-
-<th>Status</th>
-
+<td>
+<select id="room1Status">
+<option>Available</option>
+<option>Booked</option>
+<option>Maintenance</option>
+</select>
+</td>
 </tr>
 
-</thead>
+<tr>
+<td>Family Double Room</td>
 
-<tbody>
+<td>
+<input
+type="number"
+id="room2Price"
+value="1799"
+>
+</td>
+
+<td>
+<select id="room2Status">
+<option>Available</option>
+<option>Booked</option>
+<option>Maintenance</option>
+</select>
+</td>
+</tr>
 
 <tr>
+<td>Deluxe Balcony Room</td>
 
+<td>
+<input
+type="number"
+id="room3Price"
+value="1699"
+>
+</td>
+
+<td>
+<select id="room3Status">
+<option>Available</option>
+<option>Booked</option>
+<option>Maintenance</option>
+</select>
+</td>
+</tr>
+
+<tr>
 <td>Deluxe Room</td>
 
-<td>₹1,549</td>
+<td>
+<input
+type="number"
+id="room4Price"
+value="1499"
+>
+</td>
 
-<td>Available</td>
-
-</tr>
-
-<tr>
-
-<td>Premium Room</td>
-
-<td>₹2,499</td>
-
-<td>Available</td>
-
-</tr>
-
-<tr>
-
-<td>Family Room</td>
-
-<td>₹3,999</td>
-
-<td>Available</td>
-
+<td>
+<select id="room4Status">
+<option>Available</option>
+<option>Booked</option>
+<option>Maintenance</option>
+</select>
+</td>
 </tr>
 
 </tbody>
 
 </table>
 
-</main>
+<br>
 
-</div>
-
-</body>
-
-</html>
+<button onclick="saveRooms()">
+Save Changes
+</button>
