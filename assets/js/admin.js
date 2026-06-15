@@ -221,7 +221,7 @@ function loadBookings() {
 }
 
 // =====================================
-// LOAD ROOMS
+// ROOMS TABLE
 // =====================================
 
 function loadRooms() {
@@ -234,73 +234,101 @@ function loadRooms() {
     if (!roomTable) return;
 
     db.ref("rooms")
-        .on("value", (snapshot) => {
+    .on("value", (snapshot) => {
 
-            const rooms =
-                snapshot.val();
+        const rooms =
+            snapshot.val();
 
-            if (!rooms) {
+        if (!rooms) {
 
-                roomTable.innerHTML = `
-                <tr>
-                    <td colspan="4">
-                        No rooms found
-                    </td>
-                </tr>
-                `;
+            roomTable.innerHTML = `
+            <tr>
+                <td colspan="4">
+                    No rooms found
+                </td>
+            </tr>
+            `;
 
-                return;
-            }
+            return;
+        }
 
-            let html = "";
+        let html = "";
 
-            Object.keys(rooms)
-                .forEach((key) => {
+        Object.keys(rooms)
+        .forEach((key) => {
 
-                    const room =
-                        rooms[key];
+            const room =
+                rooms[key];
 
-                    html += `
-                    <tr>
+            html += `
 
-                        <td>${room.name}</td>
+            <tr>
 
-                        <td>
-                            <input
-                                type="number"
-                                value="${room.price}"
-                                id="price-${key}"
-                            >
-                        </td>
+                <td>
+                    ${room.name}
+                </td>
 
-                        <td>
-                            <select id="status-${key}">
-                                <option value="Available"
-                                ${room.status === "Available" ? "selected" : ""}>
-                                Available
-                                </option>
+                <td>
+                    <input
+                        type="number"
+                        value="${room.price}"
+                        id="price-${key}"
+                    >
+                </td>
 
-                                <option value="Booked"
-                                ${room.status === "Booked" ? "selected" : ""}>
-                                Booked
-                                </option>
+                <td>
 
-                                <option value="Maintenance"
-                                ${room.status === "Maintenance" ? "selected" : ""}>
-                                Maintenance
-                                </option>
-                            </select>
-                        </td>
+                    <select
+                        id="status-${key}"
+                    >
 
-                    </tr>
-                    `;
-                });
+                        <option
+                            value="Available"
+                            ${room.status === "Available" ? "selected" : ""}
+                        >
+                            Available
+                        </option>
 
-            roomTable.innerHTML =
-                html;
+                        <option
+                            value="Booked"
+                            ${room.status === "Booked" ? "selected" : ""}
+                        >
+                            Booked
+                        </option>
+
+                        <option
+                            value="Maintenance"
+                            ${room.status === "Maintenance" ? "selected" : ""}
+                        >
+                            Maintenance
+                        </option>
+
+                    </select>
+
+                </td>
+
+                <td>
+
+                    <button
+                        onclick="updateRoom('${key}')"
+                    >
+                        Save
+                    </button>
+
+                </td>
+
+            </tr>
+
+            `;
+
         });
-}
 
+        roomTable.innerHTML =
+            html;
+
+    });
+
+}
 // =====================================
 // SAVE ALL ROOMS
 // =====================================
@@ -363,12 +391,12 @@ function saveRooms() {
 }
 
 // =====================================
-// UPDATE SINGLE ROOM
+// UPDATE ROOM
 // =====================================
 
-function updateRoomPrice(key) {
+function updateRoom(key) {
 
-    const newPrice =
+    const price =
         document.getElementById(
             `price-${key}`
         ).value;
@@ -379,25 +407,30 @@ function updateRoomPrice(key) {
         ).value;
 
     db.ref("rooms/" + key)
-        .update({
+    .update({
 
-            price: Number(newPrice),
-            status: status
+        price: Number(price),
+        status: status
 
-        })
-        .then(() => {
+    })
 
-            alert(
-                "Room updated successfully"
-            );
+    .then(() => {
 
-        })
-        .catch((error) => {
+        alert(
+            "Room updated successfully"
+        );
 
-            console.error(error);
+    })
 
-            alert(
-                "Failed to update room"
-            );
-        });
+    .catch((error) => {
+
+        console.error(error);
+
+        alert(
+            "Failed to update room"
+        );
+
+    });
+
+}
 }
