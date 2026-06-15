@@ -5,10 +5,13 @@
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport"
 content="width=device-width, initial-scale=1.0">
 
-<title>Bookings</title>
+<title>
+Bookings | Ronglyang Lotus Admin
+</title>
 
 <link rel="stylesheet"
 href="../assets/css/admin.css">
@@ -19,8 +22,10 @@ if(
 localStorage.getItem("adminLoggedIn")
 !== "true"
 ){
+
 window.location.href =
 "login.html";
+
 }
 
 </script>
@@ -31,25 +36,56 @@ window.location.href =
 
 <div class="admin-layout">
 
+<!-- SIDEBAR -->
+
 <aside class="sidebar">
 
 <h2>Admin Panel</h2>
 
 <ul>
 
-<li><a href="dashboard.html">Dashboard</a></li>
-<li><a href="rooms.html">Rooms</a></li>
-<li><a href="bookings.html">Bookings</a></li>
-<li><a href="offers.html">Offers</a></li>
-<li><a href="#" onclick="logout()">Logout</a></li>
+<li>
+<a href="dashboard.html">
+Dashboard
+</a>
+</li>
+
+<li>
+<a href="rooms.html">
+Rooms
+</a>
+</li>
+
+<li>
+<a href="bookings.html">
+Bookings
+</a>
+</li>
+
+<li>
+<a href="offers.html">
+Offers
+</a>
+</li>
+
+<li>
+<a href="#"
+onclick="logout()">
+Logout
+</a>
+</li>
 
 </ul>
 
 </aside>
 
+<!-- CONTENT -->
+
 <main class="content">
 
-<h1>Bookings</h1>
+<h1>
+Bookings
+</h1>
 
 <table>
 
@@ -58,11 +94,16 @@ window.location.href =
 <tr>
 
 <th>Name</th>
+
 <th>Email</th>
+
 <th>Phone</th>
+
 <th>Room</th>
-<th>Check-In</th>
-<th>Check-Out</th>
+
+<th>Check In</th>
+
+<th>Check Out</th>
 
 </tr>
 
@@ -71,9 +112,13 @@ window.location.href =
 <tbody id="bookingsTable">
 
 <tr>
+
 <td colspan="6">
+
 Loading bookings...
+
 </td>
+
 </tr>
 
 </tbody>
@@ -84,6 +129,8 @@ Loading bookings...
 
 </div>
 
+<!-- FIREBASE -->
+
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
 
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
@@ -93,4 +140,5 @@ Loading bookings...
 <script src="../assets/js/admin.js"></script>
 
 </body>
+
 </html>
