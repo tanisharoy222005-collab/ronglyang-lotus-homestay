@@ -6,15 +6,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Manage Rooms</title>
+<title>Manage Rooms | Ronglyang Lotus Admin</title>
 
 <link rel="stylesheet" href="../assets/css/admin.css">
 
 <script>
-if (
-localStorage.getItem("adminLoggedIn") !== "true"
-){
-window.location.href = "login.html";
+if(localStorage.getItem("adminLoggedIn") !== "true"){
+    window.location.href = "login.html";
 }
 </script>
 
@@ -24,176 +22,88 @@ window.location.href = "login.html";
 
 <div class="admin-layout">
 
-<!-- SIDEBAR -->
+    <!-- SIDEBAR -->
 
-<aside class="sidebar">
+    <aside class="sidebar">
 
-<h2>Admin Panel</h2>
+        <h2>Admin Panel</h2>
 
-<ul>
+        <ul>
 
-<li>
-<a href="dashboard.html">
-Dashboard
-</a>
-</li>
+            <li>
+                <a href="dashboard.html">
+                    Dashboard
+                </a>
+            </li>
 
-<li>
-<a href="rooms.html">
-Rooms
-</a>
-</li>
+            <li>
+                <a href="rooms.html" class="active">
+                    Rooms
+                </a>
+            </li>
 
-<li>
-<a href="bookings.html">
-Bookings
-</a>
-</li>
+            <li>
+                <a href="bookings.html">
+                    Bookings
+                </a>
+            </li>
 
-<li>
-<a href="offers.html">
-Offers
-</a>
-</li>
+            <li>
+                <a href="#" onclick="logout()">
+                    Logout
+                </a>
+            </li>
 
-<li>
-<a href="#" onclick="logout()">
-Logout
-</a>
-</li>
+        </ul>
 
-</ul>
+    </aside>
 
-</aside>
+    <!-- MAIN CONTENT -->
 
-<!-- CONTENT -->
+    <main class="content">
 
-<main class="content">
+        <h1>Manage Rooms</h1>
 
-<h1>Manage Rooms</h1>
+        <div class="table-wrapper">
 
-<div class="table-wrapper">
+            <table>
 
-<table>
+                <thead>
 
-<thead>
+                    <tr>
+                        <th>Room Name</th>
+                        <th>Price (₹)</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
 
-<tr>
-<th>Room</th>
-<th>Price (₹)</th>
-<th>Status</th>
-</tr>
+                </thead>
 
-</thead>
+                <tbody id="roomsTable">
 
-<tbody id="roomsTable">
+                    <tr>
+                        <td colspan="4">
+                            Loading rooms...
+                        </td>
+                    </tr>
 
-<tr>
+                </tbody>
 
-<td>Deluxe Double Room</td>
+            </table>
 
-<td>
-<input
-type="number"
-id="room1Price"
-value="1549"
->
-</td>
+        </div>
 
-<td>
-<select id="room1Status">
-<option>Available</option>
-<option>Booked</option>
-<option>Maintenance</option>
-</select>
-</td>
-
-</tr>
-
-<tr>
-
-<td>Family Double Room</td>
-
-<td>
-<input
-type="number"
-id="room2Price"
-value="1799"
->
-</td>
-
-<td>
-<select id="room2Status">
-<option>Available</option>
-<option>Booked</option>
-<option>Maintenance</option>
-</select>
-</td>
-
-</tr>
-
-<tr>
-
-<td>Deluxe Balcony Room</td>
-
-<td>
-<input
-type="number"
-id="room3Price"
-value="1699"
->
-</td>
-
-<td>
-<select id="room3Status">
-<option>Available</option>
-<option>Booked</option>
-<option>Maintenance</option>
-</select>
-</td>
-
-</tr>
-
-<tr>
-
-<td>Deluxe Room</td>
-
-<td>
-<input
-type="number"
-id="room4Price"
-value="1499"
->
-</td>
-
-<td>
-<select id="room4Status">
-<option>Available</option>
-<option>Booked</option>
-<option>Maintenance</option>
-</select>
-</td>
-
-</tr>
-
-</tbody>
-
-</table>
+    </main>
 
 </div>
 
-<br>
+<!-- Firebase -->
 
-<button class="save-btn" onclick="saveRooms()">
-Save Changes
-</button>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
 
-</main>
-
-</div>
-
+<script src="../assets/js/firebase.js"></script>
 <script src="../assets/js/admin.js"></script>
 
 </body>
-
 </html>
