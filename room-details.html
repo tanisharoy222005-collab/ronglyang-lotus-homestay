@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -99,7 +98,7 @@ Comfortable accommodation with valley views, balconies and modern amenities.
 
 <h2>Deluxe Double Room, Balcony, Valley View</h2>
 
-<p class="room-price">
+<p class="room-price" id="detailPrice1">
 Starting from ₹1,549 / Night
 </p>
 
@@ -162,7 +161,7 @@ Book This Room
 
 <h2>Family Double Room, Balcony, Valley View</h2>
 
-<p class="room-price">
+<p class="room-price" id="detailPrice2">
 Starting from ₹1,799 / Night
 </p>
 
@@ -224,7 +223,7 @@ Book This Room
 
 <h2>Deluxe Double Room, Balcony</h2>
 
-<p class="room-price">
+<p class="room-price" id="detailPrice3">
 Starting from ₹1,699 / Night
 </p>
 
@@ -286,7 +285,7 @@ Book This Room
 
 <h2>Deluxe Double Room</h2>
 
-<p class="room-price">
+<p class="room-price" id="detailPrice4">
 Starting from ₹1,499 / Night
 </p>
 
@@ -335,6 +334,47 @@ Book This Room
 </div>
 
 </footer>
+</footer>
 
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+<script src="assets/js/firebase.js"></script>
+
+<script>
+
+db.ref("rooms").on("value", (snapshot) => {
+
+const rooms = snapshot.val();
+
+if(!rooms) return;
+
+if(rooms.room1){
+document.getElementById("detailPrice1").innerHTML =
+"Starting from ₹" + rooms.room1.price + " / Night";
+}
+
+if(rooms.room2){
+document.getElementById("detailPrice2").innerHTML =
+"Starting from ₹" + rooms.room2.price + " / Night";
+}
+
+if(rooms.room3){
+document.getElementById("detailPrice3").innerHTML =
+"Starting from ₹" + rooms.room3.price + " / Night";
+}
+
+if(rooms.room4){
+document.getElementById("detailPrice4").innerHTML =
+"Starting from ₹" + rooms.room4.price + " / Night";
+}
+
+});
+
+</script>
+
+</body>
+</html>
 </body>
 </html>
