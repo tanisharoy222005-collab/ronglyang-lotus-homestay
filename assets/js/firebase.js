@@ -18,7 +18,8 @@ firebase.initializeApp(firebaseConfig);
 }
 
 // Realtime Database Reference
+//uses the already saved tablei if required
 
-const db = firebase.database();
+window.db = firebase.database();
 
 console.log("Firebase Connected Successfully");
