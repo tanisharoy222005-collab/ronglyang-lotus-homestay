@@ -1,11 +1,13 @@
 // ====================================
-// BOOKING FORM
+// BOOKING FORM + FIREBASE SAVE
 // ====================================
+
+document.addEventListener("DOMContentLoaded", () => {
 
 const bookingForm =
 document.getElementById("bookingForm");
 
-if(bookingForm){
+if (!bookingForm) return;
 
 bookingForm.addEventListener(
 "submit",
@@ -16,51 +18,52 @@ e.preventDefault();
 const bookingData = {
 
 name:
-document.getElementById("name").value,
+document.getElementById("name")?.value || "",
 
 email:
-document.getElementById("email").value,
+document.getElementById("email")?.value || "",
 
 phone:
-document.getElementById("phone").value,
+document.getElementById("phone")?.value || "",
 
 room:
-document.getElementById("room").value,
+document.getElementById("room")?.value || "",
 
 checkin:
-document.getElementById("checkin").value,
+document.getElementById("checkin")?.value || "",
 
 checkout:
-document.getElementById("checkout").value,
+document.getElementById("checkout")?.value || "",
 
 createdAt:
 new Date().toISOString()
 
 };
 
-// Create unique booking record
+db.ref("bookings")
+.push(bookingData)
 
-const bookingRef =
-db.ref("bookings").push();
+.then(() => {
 
-bookingRef
-.set(bookingData)
-.then(()=>{
+alert(
+"Booking submitted successfully!"
+);
 
 window.location.href =
 "booking-success.html";
 
 })
-.catch((error)=>{
+
+.catch((error) => {
 
 console.error(error);
 
 alert(
-"Booking failed. Please try again."
+"Failed to save booking."
 );
 
 });
 
 });
 
-}
+});
