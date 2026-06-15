@@ -1,143 +1,127 @@
+
 // =====================================
-// ADMIN LOGIN
+// ADMIN PANEL
 // =====================================
 
 document.addEventListener("DOMContentLoaded", () => {
 
-const form = document.getElementById("loginForm");
+    // LOGIN PAGE
 
-if (form) {
+    const form = document.getElementById("loginForm");
 
-const emailInput =
-document.getElementById("email");
+    if (form) {
 
-const passwordInput =
-document.getElementById("password");
+        const emailInput =
+            document.getElementById("email");
 
-const errorText =
-document.getElementById("loginError");
+        const passwordInput =
+            document.getElementById("password");
 
-const modeText =
-document.getElementById("modeText");
+        const errorText =
+            document.getElementById("loginError");
 
-const submitBtn =
-document.getElementById("submitBtn");
+        const modeText =
+            document.getElementById("modeText");
 
-const savedEmail =
-localStorage.getItem("adminEmail");
+        const submitBtn =
+            document.getElementById("submitBtn");
 
-const savedPassword =
-localStorage.getItem("adminPassword");
+        const savedEmail =
+            localStorage.getItem("adminEmail");
 
-// FIRST TIME SETUP
+        const savedPassword =
+            localStorage.getItem("adminPassword");
 
-if (!savedEmail || !savedPassword) {
+        if (!savedEmail || !savedPassword) {
 
-modeText.textContent =
-"No admin account found. Create a new admin account.";
+            modeText.textContent =
+                "No admin account found. Create a new admin account.";
 
-submitBtn.textContent =
-"Create Account";
+            submitBtn.textContent =
+                "Create Account";
 
-}
+        } else {
 
-// LOGIN MODE
+            modeText.textContent =
+                "Login using your saved credentials.";
 
-else {
+            submitBtn.textContent =
+                "Login";
 
-modeText.textContent =
-"Login using your saved credentials.";
+        }
 
-submitBtn.textContent =
-"Login";
+        form.addEventListener("submit", (e) => {
 
-}
+            e.preventDefault();
 
-form.addEventListener("submit", (e) => {
+            const email =
+                emailInput.value.trim();
 
-e.preventDefault();
+            const password =
+                passwordInput.value.trim();
 
-const email =
-emailInput.value.trim();
+            const storedEmail =
+                localStorage.getItem("adminEmail");
 
-const password =
-passwordInput.value.trim();
+            const storedPassword =
+                localStorage.getItem("adminPassword");
 
-const storedEmail =
-localStorage.getItem("adminEmail");
+            // CREATE ACCOUNT
 
-const storedPassword =
-localStorage.getItem("adminPassword");
+            if (!storedEmail || !storedPassword) {
 
-// CREATE ACCOUNT
+                localStorage.setItem(
+                    "adminEmail",
+                    email
+                );
 
-if (!storedEmail || !storedPassword) {
+                localStorage.setItem(
+                    "adminPassword",
+                    password
+                );
 
-localStorage.setItem(
-"adminEmail",
-email
-);
+                localStorage.setItem(
+                    "adminLoggedIn",
+                    "true"
+                );
 
-localStorage.setItem(
-"adminPassword",
-password
-);
+                window.location.href =
+                    "dashboard.html";
 
-localStorage.setItem(
-"adminLoggedIn",
-"true"
-);
+                return;
+            }
 
-window.location.href =
-"dashboard.html";
+            // LOGIN
 
-return;
+            if (
+                email === storedEmail &&
+                password === storedPassword
+            ) {
 
-}
+                localStorage.setItem(
+                    "adminLoggedIn",
+                    "true"
+                );
 
-// LOGIN
+                window.location.href =
+                    "dashboard.html";
 
-if (
-email === storedEmail &&
-password === storedPassword
-) {
+            } else {
 
-localStorage.setItem(
-"adminLoggedIn",
-"true"
-);
+                errorText.textContent =
+                    "Invalid Email or Password";
 
-window.location.href =
-"dashboard.html";
+            }
 
-}
+        });
 
-else {
+    }
 
-errorText.textContent =
-"Invalid Email or Password";
+    // LOAD PAGE DATA
 
-}
-
-});
-
-}
-
-// DASHBOARD COUNTS
-
-loadDashboardCounts();
-
-// BOOKINGS TABLE
-
-loadBookings();
-
-// ROOMS TABLE
-
-loadRooms();
-
-// OFFERS TABLE
-
-loadOffers();
+    loadDashboardCounts();
+    loadBookings();
+    loadRooms();
 
 });
 
@@ -147,12 +131,12 @@ loadOffers();
 
 function logout() {
 
-localStorage.removeItem(
-"adminLoggedIn"
-);
+    localStorage.removeItem(
+        "adminLoggedIn"
+    );
 
-window.location.href =
-"login.html";
+    window.location.href =
+        "login.html";
 
 }
 
@@ -162,363 +146,277 @@ window.location.href =
 
 function resetAdmin() {
 
-if (
-confirm(
-"Delete current admin account?"
-)
-) {
+    if (
+        confirm(
+            "Delete current admin account?"
+        )
+    ) {
 
-localStorage.removeItem(
-"adminEmail"
-);
+        localStorage.removeItem(
+            "adminEmail"
+        );
 
-localStorage.removeItem(
-"adminPassword"
-);
+        localStorage.removeItem(
+            "adminPassword"
+        );
 
-localStorage.removeItem(
-"adminLoggedIn"
-);
+        localStorage.removeItem(
+            "adminLoggedIn"
+        );
 
-location.reload();
+        location.reload();
 
-}
+    }
 
 }
 
 // =====================================
-// DASHBOARD
+// DASHBOARD COUNTS
 // =====================================
 
 function loadDashboardCounts() {
 
-const totalRooms =
-document.getElementById(
-"totalRooms"
-);
+    const totalRooms =
+        document.getElementById(
+            "totalRooms"
+        );
 
-const totalBookings =
-document.getElementById(
-"totalBookings"
-);
+    const totalBookings =
+        document.getElementById(
+            "totalBookings"
+        );
 
-const totalOffers =
-document.getElementById(
-"totalOffers"
-);
+    if (
+        !totalRooms &&
+        !totalBookings
+    ) return;
 
-if (
-!totalRooms &&
-!totalBookings &&
-!totalOffers
-) return;
+    // TOTAL ROOMS
 
-// ROOMS
+    db.ref("rooms")
+        .on("value", (snapshot) => {
 
-db.ref("rooms")
-.on("value", (snapshot) => {
+            const rooms =
+                snapshot.val();
 
-const rooms =
-snapshot.val();
+            if (
+                rooms &&
+                totalRooms
+            ) {
 
-if (rooms && totalRooms) {
+                totalRooms.textContent =
+                    Object.keys(rooms).length;
 
-totalRooms.textContent =
-Object.keys(rooms).length;
+            } else if (totalRooms) {
 
-}
+                totalRooms.textContent =
+                    "0";
 
-});
+            }
 
-// BOOKINGS
+        });
 
-db.ref("bookings")
-.on("value", (snapshot) => {
+    // TOTAL BOOKINGS
 
-const bookings =
-snapshot.val();
+    db.ref("bookings")
+        .on("value", (snapshot) => {
 
-if (bookings && totalBookings) {
+            const bookings =
+                snapshot.val();
 
-totalBookings.textContent =
-Object.keys(bookings).length;
+            if (
+                bookings &&
+                totalBookings
+            ) {
 
-}
-else if(totalBookings){
+                totalBookings.textContent =
+                    Object.keys(bookings).length;
 
-totalBookings.textContent = "0";
+            } else if (totalBookings) {
 
-}
+                totalBookings.textContent =
+                    "0";
 
-});
+            }
 
-// OFFERS
-
-db.ref("offers")
-.on("value", (snapshot) => {
-
-const offers =
-snapshot.val();
-
-if (offers && totalOffers) {
-
-totalOffers.textContent =
-Object.keys(offers).length;
-
-}
-else if(totalOffers){
-
-totalOffers.textContent = "0";
-
-}
-
-});
+        });
 
 }
 
 // =====================================
-// BOOKINGS
+// BOOKINGS TABLE
 // =====================================
 
 function loadBookings() {
 
-const table =
-document.getElementById(
-"bookingsTable"
-);
+    const table =
+        document.getElementById(
+            "bookingsTable"
+        );
 
-if (!table) return;
+    if (!table) return;
 
-db.ref("bookings")
-.on("value", (snapshot) => {
+    db.ref("bookings")
+        .on("value", (snapshot) => {
 
-const bookings =
-snapshot.val();
+            const bookings =
+                snapshot.val();
 
-if (!bookings) {
+            if (!bookings) {
 
-table.innerHTML = `
+                table.innerHTML = `
+                <tr>
+                    <td colspan="6">
+                        No bookings found
+                    </td>
+                </tr>
+                `;
 
-<tr>
-<td colspan="6">
-No bookings found
-</td>
-</tr>
-`;
+                return;
+            }
 
-return;
+            let html = "";
 
-}
+            Object.keys(bookings)
+                .forEach((key) => {
 
-let html = "";
+                    const booking =
+                        bookings[key];
 
-Object.keys(bookings)
-.forEach((key) => {
+                    html += `
+                    <tr>
+                        <td>${booking.name || ""}</td>
+                        <td>${booking.email || ""}</td>
+                        <td>${booking.phone || ""}</td>
+                        <td>${booking.room || ""}</td>
+                        <td>${booking.checkin || ""}</td>
+                        <td>${booking.checkout || ""}</td>
+                    </tr>
+                    `;
 
-const booking =
-bookings[key];
+                });
 
-html += `
+            table.innerHTML =
+                html;
 
-<tr>
-<td>${booking.name || ""}</td>
-<td>${booking.email || ""}</td>
-<td>${booking.phone || ""}</td>
-<td>${booking.room || ""}</td>
-<td>${booking.checkin || ""}</td>
-<td>${booking.checkout || ""}</td>
-</tr>
-`;
-
-});
-
-table.innerHTML = html;
-
-});
+        });
 
 }
 
 // =====================================
-// ROOMS
+// ROOMS TABLE
 // =====================================
 
 function loadRooms() {
 
-const roomTable =
-document.getElementById(
-"roomsTable"
-);
+    const roomTable =
+        document.getElementById(
+            "roomsTable"
+        );
 
-if (!roomTable) return;
+    if (!roomTable) return;
 
-db.ref("rooms")
-.on("value", (snapshot) => {
+    db.ref("rooms")
+        .on("value", (snapshot) => {
 
-const rooms =
-snapshot.val();
+            const rooms =
+                snapshot.val();
 
-if (!rooms) return;
+            if (!rooms) {
 
-let html = "";
+                roomTable.innerHTML = `
+                <tr>
+                    <td colspan="4">
+                        No rooms found
+                    </td>
+                </tr>
+                `;
 
-Object.keys(rooms)
-.forEach((key) => {
+                return;
+            }
 
-const room =
-rooms[key];
+            let html = "";
 
-html += `
+            Object.keys(rooms)
+                .forEach((key) => {
 
-<tr>
-<td>${room.name}</td>
-<td>
-<input
-type="number"
-value="${room.price}"
-id="price-${key}"
->
-</td>
-<td>${room.status}</td>
-<td>
-<button
-onclick="updateRoomPrice('${key}')"
->
-Save
-</button>
-</td>
-</tr>
-`;
+                    const room =
+                        rooms[key];
 
-});
+                    html += `
+                    <tr>
 
-roomTable.innerHTML =
-html;
+                        <td>
+                            ${room.name}
+                        </td>
 
-});
+                        <td>
+                            <input
+                                type="number"
+                                value="${room.price}"
+                                id="price-${key}"
+                            >
+                        </td>
+
+                        <td>
+                            ${room.status}
+                        </td>
+
+                        <td>
+                            <button
+                                onclick="updateRoomPrice('${key}')"
+                            >
+                                Save
+                            </button>
+                        </td>
+
+                    </tr>
+                    `;
+
+                });
+
+            roomTable.innerHTML =
+                html;
+
+        });
 
 }
+
+// =====================================
+// UPDATE ROOM PRICE
+// =====================================
 
 function updateRoomPrice(key) {
 
-const newPrice =
-document.getElementById(
-`price-${key}`
-).value;
+    const newPrice =
+        document.getElementById(
+            `price-${key}`
+        ).value;
 
-db.ref("rooms/" + key)
-.update({
+    db.ref(
+        "rooms/" + key
+    )
+    .update({
 
-price: Number(newPrice)
+        price:
+            Number(newPrice)
 
-})
+    })
+    .then(() => {
 
-.then(() => {
+        alert(
+            "Room price updated successfully"
+        );
 
-alert(
-"Room price updated"
-);
+    })
+    .catch((error) => {
 
-});
+        console.error(error);
 
-}
+        alert(
+            "Failed to update room price"
+        );
 
-// =====================================
-// OFFERS
-// =====================================
-
-function loadOffers() {
-
-const offersTable =
-document.getElementById(
-"offersTable"
-);
-
-if (!offersTable) return;
-
-db.ref("offers")
-.on("value", (snapshot) => {
-
-const offers =
-snapshot.val();
-
-if (!offers) {
-
-offersTable.innerHTML =
-"<tr><td>No offers found</td></tr>";
-
-return;
-
-}
-
-let html = "";
-
-Object.keys(offers)
-.forEach((key) => {
-
-const offer =
-offers[key];
-
-html += `
-
-<tr>
-<td>${offer.title}</td>
-<td>${offer.description}</td>
-</tr>
-`;
-
-});
-
-offersTable.innerHTML =
-html;
-
-});
-
-}
-
-function addOffer() {
-
-const title =
-document.getElementById(
-"offerTitle"
-).value;
-
-const description =
-document.getElementById(
-"offerDescription"
-).value;
-
-if (!title || !description) {
-
-alert(
-"Fill all fields"
-);
-
-return;
-
-}
-
-db.ref("offers")
-.push({
-
-title,
-description
-
-})
-
-.then(() => {
-
-alert(
-"Offer Added"
-);
-
-document.getElementById(
-"offerTitle"
-).value = "";
-
-document.getElementById(
-"offerDescription"
-).value = "";
-
-});
+    });
 
 }
