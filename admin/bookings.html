@@ -1,19 +1,29 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport"
 content="width=device-width, initial-scale=1.0">
 
-<title>
-Bookings
-</title>
+<title>Bookings</title>
 
 <link rel="stylesheet"
 href="../assets/css/admin.css">
+
+<script>
+
+if(
+localStorage.getItem("adminLoggedIn")
+!== "true"
+){
+window.location.href =
+"login.html";
+}
+
+</script>
 
 </head>
 
@@ -28,12 +38,10 @@ href="../assets/css/admin.css">
 <ul>
 
 <li><a href="dashboard.html">Dashboard</a></li>
-
 <li><a href="rooms.html">Rooms</a></li>
-
 <li><a href="bookings.html">Bookings</a></li>
-
 <li><a href="offers.html">Offers</a></li>
+<li><a href="#" onclick="logout()">Logout</a></li>
 
 </ul>
 
@@ -50,29 +58,22 @@ href="../assets/css/admin.css">
 <tr>
 
 <th>Name</th>
-
+<th>Email</th>
+<th>Phone</th>
 <th>Room</th>
-
 <th>Check-In</th>
-
 <th>Check-Out</th>
 
 </tr>
 
 </thead>
 
-<tbody>
+<tbody id="bookingsTable">
 
 <tr>
-
-<td>Sample Guest</td>
-
-<td>Deluxe Room</td>
-
-<td>10 Aug</td>
-
-<td>12 Aug</td>
-
+<td colspan="6">
+Loading bookings...
+</td>
 </tr>
 
 </tbody>
@@ -83,6 +84,13 @@ href="../assets/css/admin.css">
 
 </div>
 
-</body>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
 
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+<script src="../assets/js/firebase.js"></script>
+
+<script src="../assets/js/admin.js"></script>
+
+</body>
 </html>
