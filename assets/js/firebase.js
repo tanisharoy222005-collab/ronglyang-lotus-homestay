@@ -1,14 +1,14 @@
 // Firebase Configuration
 
 const firebaseConfig = {
-apiKey: "AIzaSyDserpkqMBPZphgFTAspUhFTnGe-nNdHZQ",
-authDomain: "ronglyang-lotus-homestay.firebaseapp.com",
-databaseURL: "https://ronglyang-lotus-homestay-default-rtdb.asia-southeast1.firebasedatabase.app",
-projectId: "ronglyang-lotus-homestay",
-storageBucket: "ronglyang-lotus-homestay.firebasestorage.app",
-messagingSenderId: "239906245408",
-appId: "1:239906245408:web:494879e15c2861835ca545",
-measurementId: "G-NCXR7Y7WP7"
+  apiKey: "AIzaSyDGdaL6fUi5P4DZHx8ZPq3L1jnTc5wOJ7I",
+  authDomain: "ronglyang-lotus-homestay-23a4b.firebaseapp.com",
+  databaseURL: "https://ronglyang-lotus-homestay-23a4b-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "ronglyang-lotus-homestay-23a4b",
+  storageBucket: "ronglyang-lotus-homestay-23a4b.firebasestorage.app",
+  messagingSenderId: "765383761315",
+  appId: "1:765383761315:web:13efe9fa1dc18a02d58e16",
+  measurementId: "G-3K06GDLXTW"
 };
 
 // Initialize Firebase only once
