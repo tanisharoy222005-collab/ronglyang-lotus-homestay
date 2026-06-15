@@ -345,28 +345,29 @@ Reserve Your Stay
 
 </footer>
 
-<script src="assets/js/app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+<script src="assets/js/firebase.js"></script>
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
+db.ref("rooms").on("value", (snapshot) => {
 
-const rooms = JSON.parse(
-localStorage.getItem("roomsData")
-);
+const rooms = snapshot.val();
 
 if(!rooms) return;
 
-document.getElementById("price1").textContent =
-`₹${rooms.room1.price} / Night`;
+document.getElementById("price1").innerHTML =
+"₹" + rooms.room1.price + " / Night";
 
-document.getElementById("price2").textContent =
-`₹${rooms.room2.price} / Night`;
+document.getElementById("price2").innerHTML =
+"₹" + rooms.room2.price + " / Night";
 
-document.getElementById("price3").textContent =
-`₹${rooms.room3.price} / Night`;
+document.getElementById("price3").innerHTML =
+"₹" + rooms.room3.price + " / Night";
 
-document.getElementById("price4").textContent =
-`₹${rooms.room4.price} / Night`;
+document.getElementById("price4").innerHTML =
+"₹" + rooms.room4.price + " / Night";
 
 });
 </script>
