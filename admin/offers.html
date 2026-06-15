@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -10,13 +11,22 @@
 
 <link rel="stylesheet" href="../assets/css/admin.css">
 
+<script>
+
+if(
+localStorage.getItem("adminLoggedIn")
+!== "true"
+){
+window.location.href = "login.html";
+}
+
+</script>
+
 </head>
 
 <body>
 
 <div class="admin-layout">
-
-<!-- SIDEBAR -->
 
 <aside class="sidebar">
 
@@ -24,23 +34,69 @@
 
 <ul>
 
-<li>
-<a href="dashboard.html">
-Dashboard
-</a>
-</li>
+<li><a href="dashboard.html">Dashboard</a></li>
+<li><a href="rooms.html">Rooms</a></li>
+<li><a href="bookings.html">Bookings</a></li>
+<li><a href="offers.html">Offers</a></li>
+<li><a href="#" onclick="logout()">Logout</a></li>
 
-<li>
-<a href="rooms.html">
-Rooms
-</a>
-</li>
+</ul>
 
-<li>
-<a href="bookings.html">
-Bookings
-</a>
-</li>
+</aside>
 
-<li>
-<a href="offers.html">
+<main class="content">
+
+<h1>Manage Offers</h1>
+
+<div class="card">
+
+<h3>Create New Offer</h3>
+
+<br>
+
+<input
+type="text"
+id="offerTitle"
+placeholder="Offer Title"
+style="width:100%;padding:12px;margin-bottom:10px;"
+
+>
+
+<textarea
+id="offerDescription"
+placeholder="Offer Description"
+style="width:100%;padding:12px;height:120px;"
+></textarea>
+
+<br><br>
+
+<button onclick="addOffer()">
+Save Offer
+</button>
+
+</div>
+
+<br>
+
+<div class="card">
+
+<h3>Current Offers</h3>
+
+<div id="offersList">
+
+<p>No offers available.</p>
+
+</div>
+
+</div>
+
+</main>
+
+</div>
+
+<script src="../assets/js/firebase.js"></script>
+
+<script src="../assets/js/admin.js"></script>
+
+</body>
+</html>
