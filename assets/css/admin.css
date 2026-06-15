@@ -1,10 +1,319 @@
+```css
+/* =====================================
+   GLOBAL
+===================================== */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#f5f7fb;
+color:#333;
+}
+
+a{
+text-decoration:none;
+color:inherit;
+}
+
+/* =====================================
+   LOGIN PAGE
+===================================== */
+
+.login-container{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:
+linear-gradient(
+rgba(0,0,0,.55),
+rgba(0,0,0,.55)
+),
+url('../gallery15.png');
+background-size:cover;
+background-position:center;
+}
+
+.login-box{
+width:100%;
+max-width:450px;
+background:white;
+padding:40px;
+border-radius:20px;
+box-shadow:0 20px 40px rgba(0,0,0,.15);
+text-align:center;
+}
+
+.login-box h1{
+margin-bottom:30px;
+color:#b88746;
+font-size:2rem;
+}
+
+.login-box form{
+display:flex;
+flex-direction:column;
+gap:18px;
+}
+
+.login-box input{
+width:100%;
+padding:15px;
+border:1px solid #ddd;
+border-radius:10px;
+font-size:15px;
+outline:none;
+transition:.3s;
+}
+
+.login-box input:focus{
+border-color:#b88746;
+}
+
+.login-box button{
+padding:15px;
+border:none;
+background:#b88746;
+color:white;
+font-size:16px;
+font-weight:600;
+border-radius:10px;
+cursor:pointer;
+transition:.3s;
+}
+
+.login-box button:hover{
+background:#9a6f35;
+}
+
+#loginError{
+color:red;
+margin-top:15px;
+font-weight:600;
+}
+
+.reset-btn{
+margin-top:15px;
+background:#ef4444 !important;
+}
+
+.reset-btn:hover{
+background:#dc2626 !important;
+}
+
+/* =====================================
+   ADMIN LAYOUT
+===================================== */
+
+.admin-layout{
+display:flex;
+min-height:100vh;
+}
+
+/* =====================================
+   SIDEBAR
+===================================== */
+
+.sidebar{
+width:260px;
+background:#111827;
+color:white;
+padding:30px 20px;
+}
+
+.sidebar h2{
+margin-bottom:35px;
+text-align:center;
+font-size:1.6rem;
+}
+
+.sidebar ul{
+list-style:none;
+}
+
+.sidebar ul li{
+margin-bottom:15px;
+}
+
+.sidebar ul li a{
+display:block;
+padding:14px 18px;
+border-radius:10px;
+transition:.3s;
+color:white;
+}
+
+.sidebar ul li a:hover{
+background:#b88746;
+}
+
+/* =====================================
+   CONTENT
+===================================== */
+
+.content{
+flex:1;
+padding:40px;
+}
+
+.content h1{
+margin-bottom:30px;
+font-size:2rem;
+}
+
+/* =====================================
+   DASHBOARD CARDS
+===================================== */
+
+.cards{
+display:grid;
+grid-template-columns:
+repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.card{
+background:white;
+padding:25px;
+border-radius:15px;
+box-shadow:0 8px 25px rgba(0,0,0,.08);
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+}
+
+.card h3{
+margin-bottom:15px;
+font-size:1.2rem;
+}
+
+.card p{
+font-size:2rem;
+font-weight:700;
+color:#b88746;
+}
+
+.card a{
+display:inline-block;
+margin-top:10px;
+font-weight:600;
+color:#b88746;
+}
+
+/* =====================================
+   TABLES
+===================================== */
+
+.table-wrapper{
+background:white;
+padding:25px;
+border-radius:15px;
+box-shadow:0 8px 25px rgba(0,0,0,.08);
+overflow-x:auto;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+background:white;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 8px 25px rgba(0,0,0,.08);
+}
+
+table th{
+background:#b88746;
+color:white;
+padding:15px;
+text-align:left;
+}
+
+table td{
+padding:15px;
+border-bottom:1px solid #eee;
+}
+
+table tr:hover{
+background:#fafafa;
+}
+
+/* =====================================
+   FORMS
+===================================== */
+
+.admin-form{
+background:white;
+padding:30px;
+border-radius:15px;
+box-shadow:0 8px 25px rgba(0,0,0,.08);
+max-width:700px;
+}
+
+.admin-form input,
+.admin-form textarea,
+.admin-form select{
+width:100%;
+padding:14px;
+margin-bottom:15px;
+border:1px solid #ddd;
+border-radius:10px;
+font-size:15px;
+}
+
+.admin-form textarea{
+min-height:150px;
+resize:vertical;
+}
+
+.admin-form button{
+background:#b88746;
+color:white;
+border:none;
+padding:15px 25px;
+border-radius:10px;
+cursor:pointer;
+font-weight:600;
+}
+
+.admin-form button:hover{
+background:#9a6f35;
+}
+
+/* =====================================
+   SUCCESS / ERROR
+===================================== */
+
+.success-msg{
+padding:12px;
+background:#d1fae5;
+color:#065f46;
+border-radius:10px;
+margin-bottom:20px;
+}
+
+.error-msg{
+padding:12px;
+background:#fee2e2;
+color:#991b1b;
+border-radius:10px;
+margin-bottom:20px;
+}
+
 /* =====================================
    ROOM MANAGEMENT
 ===================================== */
 
 .rooms-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+grid-template-columns:
+repeat(auto-fit,minmax(320px,1fr));
 gap:20px;
 }
 
@@ -50,3 +359,36 @@ cursor:pointer;
 .save-btn:hover{
 background:#9a6f35;
 }
+
+/* =====================================
+   MOBILE
+===================================== */
+
+@media(max-width:900px){
+
+.admin-layout{
+flex-direction:column;
+}
+
+.sidebar{
+width:100%;
+}
+
+.content{
+padding:25px;
+}
+
+.cards{
+grid-template-columns:1fr;
+}
+
+.login-box{
+margin:20px;
+}
+
+.rooms-grid{
+grid-template-columns:1fr;
+}
+
+}
+```
