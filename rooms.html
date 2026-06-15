@@ -115,7 +115,7 @@ ideal for couples and leisure travellers.
 
 <div class="room-footer">
 
-<div class="room-price">
+<div class="room-price" id="price1">
 ₹1,549 / Night
 </div>
 
@@ -161,7 +161,7 @@ and beautiful mountain surroundings.
 
 <div class="room-footer">
 
-<div class="room-price">
+<div class="room-price" id="price2">
 ₹1,799 / Night
 </div>
 
@@ -207,7 +207,7 @@ for a peaceful mountain stay.
 
 <div class="room-footer">
 
-<div class="room-price">
+<div class="room-price" id="price3">
 ₹1,699 / Night
 </div>
 
@@ -253,7 +253,7 @@ for a comfortable stay in Gangtok.
 
 <div class="room-footer">
 
-<div class="room-price">
+<div class="room-price" id="price4">
 ₹1,499 / Night
 </div>
 
@@ -346,6 +346,30 @@ Reserve Your Stay
 </footer>
 
 <script src="assets/js/app.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+const rooms = JSON.parse(
+localStorage.getItem("roomsData")
+);
+
+if(!rooms) return;
+
+document.getElementById("price1").textContent =
+`₹${rooms.room1.price} / Night`;
+
+document.getElementById("price2").textContent =
+`₹${rooms.room2.price} / Night`;
+
+document.getElementById("price3").textContent =
+`₹${rooms.room3.price} / Night`;
+
+document.getElementById("price4").textContent =
+`₹${rooms.room4.price} / Night`;
+
+});
+</script>
 
 </body>
 </html>
