@@ -1,7 +1,11 @@
+// ====================================
+// BOOKING FORM
+// ====================================
+
 const bookingForm =
 document.getElementById("bookingForm");
 
-if (bookingForm) {
+if(bookingForm){
 
 bookingForm.addEventListener(
 "submit",
@@ -9,7 +13,7 @@ function(e){
 
 e.preventDefault();
 
-const booking = {
+const bookingData = {
 
 name:
 document.getElementById("name").value,
@@ -20,24 +24,43 @@ document.getElementById("email").value,
 phone:
 document.getElementById("phone").value,
 
+room:
+document.getElementById("room").value,
+
 checkin:
 document.getElementById("checkin").value,
 
 checkout:
 document.getElementById("checkout").value,
 
-room:
-document.getElementById("room").value
+createdAt:
+new Date().toISOString()
 
 };
 
-localStorage.setItem(
-"booking",
-JSON.stringify(booking)
-);
+// Create unique booking record
+
+const bookingRef =
+db.ref("bookings").push();
+
+bookingRef
+.set(bookingData)
+.then(()=>{
 
 window.location.href =
 "booking-success.html";
 
+})
+.catch((error)=>{
+
+console.error(error);
+
+alert(
+"Booking failed. Please try again."
+);
+
 });
+
+});
+
 }
