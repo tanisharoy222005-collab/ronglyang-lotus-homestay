@@ -6,20 +6,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Manage Rooms | Ronglyang Lotus Admin</title>
+<title>Manage Rooms</title>
 
 <link rel="stylesheet" href="../assets/css/admin.css">
 
 <script>
-
 if (
 localStorage.getItem("adminLoggedIn") !== "true"
-) {
-
+){
 window.location.href = "login.html";
-
 }
-
 </script>
 
 </head>
@@ -61,8 +57,7 @@ Offers
 </li>
 
 <li>
-<a href="#"
-onclick="logout()">
+<a href="#" onclick="logout()">
 Logout
 </a>
 </li>
@@ -84,13 +79,9 @@ Logout
 <thead>
 
 <tr>
-
 <th>Room</th>
-
 <th>Price (₹)</th>
-
 <th>Status</th>
-
 </tr>
 
 </thead>
@@ -189,27 +180,17 @@ value="1499"
 
 </table>
 
+</div>
+
 <br>
 
-<button
-class="save-btn"
-onclick="saveRooms()">
+<button class="save-btn" onclick="saveRooms()">
 Save Changes
 </button>
-
-</div>
 
 </main>
 
 </div>
-
-<!-- Firebase -->
-
-<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-
-<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
-
-<script src="../assets/js/firebase.js"></script>
 
 <script src="../assets/js/admin.js"></script>
 
